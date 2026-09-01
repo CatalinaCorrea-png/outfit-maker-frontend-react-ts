@@ -8,10 +8,10 @@ const AppRouter = () => {
 	const { user } = useAuth()
   return (
     <Routes>
-			{/* Rutas públicas - siempre disponibles */}
+		{/* Public Routes */}
         <Route path="/login" element={user ? <Navigate to={"/"} replace /> : <Login />}/>
 
-			{/* Rutas privadas */}
+			{/* Private Route */}
 			<Route element={<PrivateLayer />}>
 				<Route path="/" element={<Home />} />
 			</Route>

@@ -28,7 +28,7 @@ export const tokenService = {
     const rawClient = axios.create()
     rawClient.defaults.withCredentials = true
     const { data } = await rawClient.post<RefreshResponse>(
-      `${import.meta.env.VITE_API_URL}/api/auth/refresh`,
+      `${import.meta.env.VITE_API_URL}/auth/refresh`,
     )
 
     tokenMemory.set(data.token)

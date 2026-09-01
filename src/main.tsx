@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.tsx'
 import { BrowserRouter } from 'react-router'
 import { AuthProvider } from './context/AuthContext.tsx'
+import './config/authInterceptorAxios.ts'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -3,23 +3,30 @@ import { toast } from "react-toastify"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getErrorMessage = (error: any): string => {
-  if (error?.response?.data) {
-    const { data, status } = error.response
+  const status = error?.response?.status
+
+  if (status !== undefined) {
+    // El guard de 500 va primero: el detail de un error interno puede traer
+    // internas del server (stacktrace, datos de conexion) y no se muestran
+    if (status >= 500) return "Ocurrió un error, consulte al administrador."
+
+    if (status === HttpStatusCode.Forbidden)
+      return "No tenés autorización para realizar esta acción"
+
+    const data = error.response.data
 
     if (typeof data === "object" && data !== null) {
+      // El GlobalExceptionHandler responde { status, error, detail, timestamp }
       if (data.detail) return data.detail
-      if (data.message && status < 500) return data.message
-      if (status >= 500) return "Ocurrió un error, consulte al administrador."
+      // message cubre los errores que no pasan por el advice (default de Spring)
+      if (data.message) return data.message
     }
 
-    if (typeof data === "string" && status < 500) return data
+    if (typeof data === "string" && data) return data
   }
 
   if (error?.code === "ERR_NETWORK")
     return "Problema de conexión con el servidor. Intente más tarde."
-
-  if (error.response?.status == HttpStatusCode.Forbidden)
-    return "No tenés autorización para realizar esta acción"
 
   return error?.message ?? "Error desconocido"
 }

@@ -4,7 +4,7 @@ import { User } from "../domain/User"
 import { userService } from "../services/userService"
 import { useNavigate } from "react-router"
 import type { ValidationMessage } from "../components/ValidationField/ValidationMessage"
-import { showToast } from "../utils/toats"
+import { showToast } from "../utils/toast"
 import ValidationField from "../components/ValidationField/ValidationField"
 
 
