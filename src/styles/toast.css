@@ -1,0 +1,132 @@
+/* ═══ react-toastify vestido de cuaderno y2k ═══
+
+   Ojo con el orden: Vite inyecta este archivo ANTES que ReactToastify.css
+   (viene de node_modules), así que no alcanza con importarlo después.
+   Por eso los selectores van duplicados —`:root:root`, `.X.X`— y ganan por
+   especificidad (0,2,0) contra la (0,1,0) de la librería, sin `!important`
+   y sin depender del orden de inyección.                                   */
+
+:root:root {
+  --toastify-toast-bd-radius: var(--r-md);
+  --toastify-toast-shadow: var(--pop);
+  --toastify-toast-padding: 0.85rem;
+  --toastify-toast-min-height: 58px;
+  --toastify-font-family: var(--font-ui);
+
+  --toastify-color-light: var(--paper);
+  --toastify-text-color-light: var(--ink);
+
+  /* Los íconos van en tinta sobre la chapita de color */
+  --toastify-icon-color-info: var(--ink);
+  --toastify-icon-color-success: var(--ink);
+  --toastify-icon-color-warning: var(--ink);
+  --toastify-icon-color-error: var(--ink);
+
+  --toastify-spinner-color: var(--ink);
+  --toastify-spinner-color-empty-area: var(--lilac-soft);
+
+  /* Opacidad del riel del progreso */
+  --toastify-color-progress-bgo: 0.3;
+}
+
+/* ── El toast: papel teñido, trazo de tinta y sombra dura ────── */
+
+.Toastify__toast.Toastify__toast {
+  --accent: var(--lilac);
+  border: var(--stroke-w) solid var(--ink);
+  /* aire a la derecha para que el texto no pase bajo la cruz,
+     y abajo para no chocar con la barra de progreso */
+  padding-inline-end: 2.1rem;
+  padding-block-end: 1.15rem;
+  background-color: color-mix(in srgb, var(--accent) 40%, var(--paper));
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.Toastify__toast--success.Toastify__toast--success {
+  --accent: var(--mint);
+}
+
+.Toastify__toast--warning.Toastify__toast--warning {
+  --accent: var(--butter);
+}
+
+.Toastify__toast--error.Toastify__toast--error {
+  --accent: var(--pink-mid);
+}
+
+.Toastify__toast--info.Toastify__toast--info {
+  --accent: var(--sky);
+}
+
+/* ── Ícono: la misma chapita redonda que usa .error ──────────── */
+
+.Toastify__toast-icon.Toastify__toast-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  margin-inline-end: 0.65rem;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.Toastify__toast-icon > svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ── Cruz de cerrar ──────────────────────────────────────────── */
+
+.Toastify__toast .Toastify__close-button {
+  top: 9px;
+  right: 9px;
+  color: var(--ink);
+  opacity: 0.5;
+  border-radius: 4px;
+}
+
+.Toastify__toast .Toastify__close-button:hover,
+.Toastify__toast .Toastify__close-button:focus-visible {
+  opacity: 1;
+}
+
+/* ── Barra de progreso: resaltador al pie del renglón ────────── */
+
+.Toastify__toast .Toastify__progress-bar--wrp {
+  height: 8px;
+  border-top: var(--stroke-w) solid var(--ink);
+  border-end-start-radius: calc(var(--r-md) - var(--stroke-w));
+  border-end-end-radius: calc(var(--r-md) - var(--stroke-w));
+}
+
+.Toastify__toast .Toastify__progress-bar {
+  opacity: 1;
+  background: var(--accent);
+}
+
+.Toastify__toast .Toastify__progress-bar--bg {
+  background: var(--paper);
+}
+
+/* ── Angosto: toastify va a pantalla completa y saca el radio;
+      acá se conserva la tarjeta para que la sombra siga leyéndose ── */
+
+@media only screen and (max-width: 480px) {
+  .Toastify__toast-container.Toastify__toast-container {
+    width: 100%;
+    padding-inline: 0.75rem;
+    box-sizing: border-box;
+  }
+
+  .Toastify__toast.Toastify__toast {
+    border-radius: var(--r-md);
+    margin-bottom: 0.75rem;
+  }
+}

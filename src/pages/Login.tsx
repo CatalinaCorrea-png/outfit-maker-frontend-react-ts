@@ -6,6 +6,9 @@ import { useNavigate } from "react-router"
 import type { ValidationMessage } from "../components/ValidationField/ValidationMessage"
 import { showToast } from "../utils/toast"
 import ValidationField from "../components/ValidationField/ValidationField"
+import InputField from "../components/InputField/InputField"
+import KeyButton from "../components/KeyButton/KeyButton"
+import "./login.css"
 
 
 const Login = () => {
@@ -18,10 +21,10 @@ const Login = () => {
 		e.preventDefault()
 
 		const userLogin = new User(user.email, user.password)
-		console.log("Validando usuario:", userLogin)
+		// console.log("Validando usuario:", userLogin)
 		userLogin.validateLogin()
 		if (userLogin.errors.length > 0) {
-			console.log("Errores de validación:", userLogin.errors)
+			// console.log("Errores de validación:", userLogin.errors)
 			setErrors(userLogin.errors)
 			return
 		}
@@ -30,7 +33,7 @@ const Login = () => {
 			const userLogged = await userService.login(userLogin.email, userLogin.password)
 
 			if (userLogged) {
-				console.log("Usuario logueado:", userLogged)
+				// console.log("Usuario logueado:", userLogged)
 				const userData : Omit<AuthUser, 'accessToken'> = {
 					id: userLogged.id,
 					refreshToken: userLogged.refreshToken,
@@ -45,30 +48,62 @@ const Login = () => {
 	}
 
   return (
-    <form onSubmit={handleSubmit}>
-			<div className="input">
-				<label htmlFor="email">Email</label>
-				<input
-					type="email"
-					id="email"
-					value={user.email}
-					onChange={(e) => setUser({ ...user, email: e.target.value })}
-				/>
-				<ValidationField field="email" errors={errors} />
-			</div>
+		<main className="login-screen">
+			<div className="login-card">
+				<div className="login-holes" aria-hidden="true">
+					<span />
+					<span />
+					<span />
+				</div>
+				<span className="login-tape" aria-hidden="true">★ 2 0 0 0 ★</span>
+				<span className="login-sticker" aria-hidden="true">as if! ♡</span>
 
-			<div className="input">
-				<label htmlFor="password">Password</label>
-				<input
-					type="password"
-					id="password"
-					value={user.password}
-					onChange={(e) => setUser({ ...user, password: e.target.value })}
-				/>
-				<ValidationField field="password" errors={errors} />
+				<header className="login-header">
+					<h1 className="login-title">
+						outfit <em>maker</em>
+					</h1>
+					<p className="login-subtitle">
+						tu placard, pero ordenado ✧ entrá para armar el look de hoy
+					</p>
+				</header>
+
+				<form onSubmit={handleSubmit} className="login-form" noValidate>
+					<div className="field">
+						<label className="field-label" htmlFor="email">
+							e-mail
+						</label>
+						<InputField
+							type="email"
+							id="email"
+							placeholder="Enter your email"
+							value={user.email}
+							onChange={(e) => setUser({ ...user, email: e.target.value })}
+						/>
+						<ValidationField field="email" errors={errors} />
+					</div>
+
+					<div className="field">
+						<label className="field-label" htmlFor="password">
+							contraseña
+						</label>
+						<InputField
+							type="password"
+							id="password"
+							placeholder="Enter your password"
+							value={user.password}
+							onChange={(e) => setUser({ ...user, password: e.target.value })}
+						/>
+						<ValidationField field="password" errors={errors} />
+					</div>
+
+					<div className="login-actions">
+						<KeyButton type="submit" text="Login" />
+					</div>
+				</form>
+
+				<p className="login-footer">☆ no compartas tu clave ni con tu bestie ☆</p>
 			</div>
-			<button type="submit">Login</button>
-		</form>
+		</main>
   )
 }
 

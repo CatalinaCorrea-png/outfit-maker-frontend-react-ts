@@ -67,7 +67,7 @@ const responseErrorHandler = async (error: AxiosError) => {
     !isExpiredTokenError(error) ||
     originalRequest._retry
   ) {
-    console.log("El error no es de expiracion.")
+    // console.log("El error no es de expiracion.")
     return Promise.reject(error)
   }
 

@@ -1,0 +1,46 @@
+/* Campo de texto · trazo de tinta + sombra dura (lenguaje base del sistema) */
+.input {
+  width: 100%;
+  height: 46px;
+  box-sizing: border-box;
+  padding: 0 0.85rem;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: var(--r-sm);
+  background-color: var(--paper);
+  box-shadow: var(--pop);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  outline: none;
+  transition: box-shadow 120ms ease, transform 120ms ease, background-color 120ms ease;
+}
+
+.input::placeholder {
+  font-family: var(--font-hand);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  opacity: 0.75;
+}
+
+.input:hover {
+  background-color: var(--lilac-soft);
+}
+
+/* La sombra se tiñe de lila al enfocar; el borde sigue siendo tinta
+   para que el campo no "salte" ni pierda contraste. */
+.input:focus {
+  background-color: var(--paper);
+  box-shadow: 4px 4px 0 var(--lilac), 0 0 0 4px rgba(192, 187, 254, 0.45);
+  transform: translate(-1px, -1px);
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.input:autofill,
+.input:-webkit-autofill {
+  -webkit-text-fill-color: var(--ink);
+  box-shadow: var(--pop), inset 0 0 0 100px var(--paper);
+}

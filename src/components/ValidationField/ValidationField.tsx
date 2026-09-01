@@ -23,7 +23,7 @@ const ValidationField = ({
 
     const timer = setTimeout(() => {
       setErrorMessage("")
-    }, 3000)
+    }, 5000)
 
     return () => clearTimeout(timer)
   }, [errors])
