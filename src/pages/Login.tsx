@@ -9,6 +9,7 @@ import ValidationField from "../components/ValidationField/ValidationField"
 import InputField from "../components/InputField/InputField"
 import KeyButton from "../components/KeyButton/KeyButton"
 import "./login.css"
+import GitHubLink from "../components/GitHubLink/GitHubLink"
 
 
 const Login = () => {
@@ -103,6 +104,7 @@ const Login = () => {
 
 				<p className="login-footer">☆ no compartas tu clave ni con tu bestie ☆</p>
 			</div>
+			<GitHubLink />
 		</main>
   )
 }
