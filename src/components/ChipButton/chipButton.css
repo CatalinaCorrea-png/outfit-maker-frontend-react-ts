@@ -1,0 +1,38 @@
+/* Botón chico: la misma píldora que las pestañas de la navbar, pero
+   con sombra dura. Para acciones que no merecen la tecla 3D del KeyButton. */
+
+.chip-button {
+  padding: 0.36rem 1rem;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 999px;
+  box-shadow: var(--pop-sm);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 90ms ease, box-shadow 90ms ease, filter 90ms ease;
+}
+
+.chip-button:hover {
+  transform: translate(-1px, -1px);
+  filter: brightness(1.04);
+}
+
+.chip-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.chip-button.is-solid {
+  background-color: var(--pink);
+  color: var(--paper);
+  text-shadow: 0 1px 0 rgba(58, 43, 82, 0.4);
+}
+
+.chip-button.is-ghost {
+  background-color: var(--paper);
+  color: var(--ink);
+}

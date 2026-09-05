@@ -1,0 +1,239 @@
+/* ═══ Barra de filtros · el separador pegado bajo las pestañas ═══
+   Se queda fija abajo de la navbar, que publica su alto en --navbar-h
+   (cambia cuando los links se van a otro renglón). */
+
+.filters-bar {
+  position: sticky;
+  top: var(--navbar-h, 64px);
+  z-index: 15;
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: var(--stroke-w) solid var(--ink);
+  background-color: var(--paper-shade);
+  /* mismo renglón doble de la navbar, pero en rosa para diferenciarla */
+  box-shadow: 0 4px 0 var(--pink-mid);
+}
+
+/* ── Cabecera: siempre visible ───────────────────────────────────── */
+
+.filters-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  padding: 0.55rem 1.2rem;
+}
+
+.filters-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-right: auto;
+  padding: 0.34rem 0.95rem;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 999px;
+  background-color: var(--lilac-soft);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.filters-toggle:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--pop-sm);
+}
+
+.filters-toggle.is-open {
+  background-color: var(--lilac);
+  box-shadow: var(--pop-sm);
+}
+
+.filters-caret {
+  display: inline-block;
+  font-size: 0.7rem;
+  transition: transform 160ms ease;
+}
+
+.filters-toggle.is-open .filters-caret {
+  transform: rotate(180deg);
+}
+
+/* Cuántos filtros hay puestos: se ve con el panel cerrado */
+.filters-badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 999px;
+  background-color: var(--pink);
+  font-size: 0.68rem;
+  color: var(--paper);
+}
+
+/* ── Orden: vive en la cabecera, no dentro del panel ─────────────── */
+
+.filters-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.filters-sort-label {
+  font-family: var(--font-hand);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.filters-direction {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: var(--r-sm);
+  background-color: var(--butter);
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 90ms ease, box-shadow 90ms ease;
+}
+
+.filters-direction:hover {
+  box-shadow: var(--pop-sm);
+}
+
+.filters-direction:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* ── Panel desplegable ───────────────────────────────────────────── */
+
+.filters-panel {
+  padding: 0.9rem 1.2rem 1.1rem;
+  border-top: var(--stroke-w) dashed var(--ink-soft);
+  background-color: var(--paper);
+  /* si la pantalla es corta, el panel scrollea en vez de tapar todo */
+  max-height: calc(100dvh - var(--navbar-h, 64px) - 90px);
+  overflow-y: auto;
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.7rem 1.1rem;
+  align-items: end;
+}
+
+.filters-bar .field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filters-bar .field-label {
+  font-family: var(--font-hand);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.filters-select {
+  width: 100%;
+  height: 32px;
+  padding: 0 8px;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: var(--r-sm);
+  background-color: var(--paper);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+/* ── Formalidad: los puntitos de la card, clickeables ────────────── */
+
+.filters-formality {
+  display: flex;
+  gap: 6px;
+  height: 32px;
+  align-items: center;
+}
+
+.filters-dot {
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 50%;
+  background-color: var(--paper);
+  cursor: pointer;
+  transition: transform 90ms ease, background-color 90ms ease;
+}
+
+.filters-dot:hover {
+  transform: scale(1.15);
+}
+
+.filters-dot.is-on {
+  background-color: var(--butter);
+}
+
+/* ── Archivadas ──────────────────────────────────────────────────── */
+
+.filters-check {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 7px;
+  height: 32px;
+}
+
+.filters-check input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--pink);
+  cursor: pointer;
+}
+
+.filters-check label {
+  font-family: var(--font-hand);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+/* ── Acciones ────────────────────────────────────────────────────── */
+
+.filters-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: var(--stroke-w) dashed var(--ink-soft);
+}
+
+/* ── Angosto ─────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .filters-head {
+    padding: 0.5rem 0.9rem;
+  }
+
+  .filters-panel {
+    padding: 0.8rem 0.9rem 1rem;
+  }
+
+  .filters-grid {
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 0.6rem 0.8rem;
+  }
+
+  .filters-sort-label {
+    display: none;
+  }
+}

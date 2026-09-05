@@ -1,0 +1,49 @@
+{
+  "filters": {
+    "title": "Filtros",
+    "all": "todas",
+    "category": "Categoría",
+    "name": "Nombre",
+    "brand": "Marca",
+    "pattern": "Estampado",
+    "season": "Temporada",
+    "formality": "Formalidad",
+    "onlyArchived": "Solo archivadas",
+    "sortBy": "Ordenar por",
+    "sortOptName": "nombre",
+    "sortOptCreatedAt": "más recientes",
+    "ascending": "Orden ascendente",
+    "descending": "Orden descendente",
+    "apply": "Filtrar",
+    "clear": "Limpiar"
+  },
+  "pattern": {
+    "SOLID": "liso",
+    "STRIPED": "rayado",
+    "PLAID": "cuadrillé",
+    "FLORAL": "floreado",
+    "GRAPHIC": "estampado",
+    "DOTS": "lunares",
+    "CAMO": "camuflado",
+    "ABSTRACT": "abstracto"
+  },
+  "fit": {
+    "SLIM": "entallado",
+    "REGULAR": "regular",
+    "RELAXED": "holgado",
+    "OVERSIZED": "oversize"
+  },
+  "season": {
+    "SUMMER": "verano",
+    "WINTER": "invierno",
+    "MID_SEASON": "media estación",
+    "ALL_SEASONS": "todo el año"
+  },
+  "formality": {
+    "1": "deportivo",
+    "2": "casual",
+    "3": "smart casual",
+    "4": "semi formal",
+    "5": "formal"
+  }
+}

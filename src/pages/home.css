@@ -1,7 +1,13 @@
 /* Placard: las fichas de prenda pegadas sobre el cuaderno.
    La grilla se acomoda sola; la card ya trae su propio max-width. */
 
+/* Sin padding propio: la barra de filtros va a ancho completo pegada
+   bajo la navbar, y el que respira es el contenido. */
 .home {
+  padding: 0;
+}
+
+.home-content {
   padding: 28px 20px 48px;
 }
 
@@ -17,7 +23,7 @@
 /* Mobile: la card se achica y entran 2 columnas (3 desde ~600px).
    El detalle de la prenda es el lugar para verla grande. */
 @media (max-width: 640px) {
-  .home {
+  .home-content {
     padding: 16px 12px 36px;
   }
 

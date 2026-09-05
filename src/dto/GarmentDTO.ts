@@ -35,12 +35,8 @@ export type GarmentFilters = {
     category: string | null, // category name
     name: string | null,
     brand: string | null,
-    primaryColor: string | null,
-    secondaryColor: string | null,
     pattern: Pattern | null,
-    material: string | null,
     formality: number | null,
-    fit: Fit | null,
     season: Season | null,
     active: boolean | null,
     // paging & sorting

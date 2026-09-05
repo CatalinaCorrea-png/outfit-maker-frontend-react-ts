@@ -4,7 +4,6 @@ import type { GarmentJSON } from "../dto/GarmentDTO";
 import { Fit } from "./types/Fit";
 import { Pattern } from "./types/Pattern";
 import { Season } from "./types/Season";
-import { User } from "./User";
 
 // Las columnas de texto del back son varchar(255) por defecto
 const MAX_TEXT_LENGTH = 255

@@ -1,0 +1,49 @@
+{
+  "filters": {
+    "title": "Filters",
+    "all": "all",
+    "category": "Category",
+    "name": "Name",
+    "brand": "Brand",
+    "pattern": "Pattern",
+    "season": "Season",
+    "formality": "Formality",
+    "onlyArchived": "Archived only",
+    "sortBy": "Sort by",
+    "sortOptName": "name",
+    "sortOptCreatedAt": "newest",
+    "ascending": "Ascending order",
+    "descending": "Descending order",
+    "apply": "Filter",
+    "clear": "Clear"
+  },
+  "pattern": {
+    "SOLID": "solid",
+    "STRIPED": "striped",
+    "PLAID": "plaid",
+    "FLORAL": "floral",
+    "GRAPHIC": "graphic",
+    "DOTS": "polka dots",
+    "CAMO": "camo",
+    "ABSTRACT": "abstract"
+  },
+  "fit": {
+    "SLIM": "slim",
+    "REGULAR": "regular",
+    "RELAXED": "relaxed",
+    "OVERSIZED": "oversized"
+  },
+  "season": {
+    "SUMMER": "summer",
+    "WINTER": "winter",
+    "MID_SEASON": "mid-season",
+    "ALL_SEASONS": "all year"
+  },
+  "formality": {
+    "1": "sporty",
+    "2": "casual",
+    "3": "smart casual",
+    "4": "semi formal",
+    "5": "formal"
+  }
+}

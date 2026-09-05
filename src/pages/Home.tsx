@@ -6,17 +6,14 @@ import { useOnInit } from "../hooks/useOnInit"
 import { showToast } from "../utils/toast"
 import "./home.css"
 import type { GarmentFilters } from "../dto/GarmentDTO"
+import Filters, { type SortOption } from "../components/GarmentFilters/GarmentFilters"
 
 const initialFilters: GarmentFilters = {
   category: null,
   name: null,
   brand: null,
-  primaryColor: null,
-  secondaryColor: null,
   pattern: null,
-  material: null,
   formality: null,
-  fit: null,
   season: null,
   active: null,
   page: 0,
@@ -24,6 +21,11 @@ const initialFilters: GarmentFilters = {
   sortBy: "name",
   ascending: true
 }
+
+const initialSortOptions: SortOption[] = [
+  { label: "filters.sortOptName", value: "name", current: true },
+  { label: "filters.sortOptCreatedAt", value: "createdAt", current: false },
+]
 
 const Home = () => {
   const [garments, setGarments] = useState<Garment[]>([])
@@ -44,15 +46,24 @@ const Home = () => {
 
   return (
     <main className="home">
-      {garments.length === 0 ? (
-        <p className="home-empty">todavía no hay prendas en el placard ✧</p>
-      ) : (
-        <div className="home-grid">
-          {garments.map((garment: Garment) => (
-            <GarmentCard key={garment.id} garment={garment} />
-          ))}
-        </div>
-      )}
+      <Filters 
+      initialFilters={initialFilters} 
+      initialSortOptions={initialSortOptions} 
+      filters={filters} 
+      setFilters={setFilters} 
+      sendFilters={getFilteredGarments}
+      />
+      <div className="home-content">
+        {garments.length === 0 ? (
+          <p className="home-empty">todavía no hay prendas en el placard ✧</p>
+        ) : (
+          <div className="home-grid">
+            {garments.map((garment: Garment) => (
+              <GarmentCard key={garment.id} garment={garment} />
+            ))}
+          </div>
+        )}
+      </div>
     </main>
   )
 }

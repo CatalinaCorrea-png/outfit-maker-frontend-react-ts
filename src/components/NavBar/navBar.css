@@ -121,4 +121,12 @@
     flex-basis: 100%;
     justify-content: center;
   }
+
+  /* Al caer en su propio renglón, las tools no ocupaban el ancho y quedaban
+     apretadas a la izquierda. Con basis 100% toman toda la fila y el
+     space-between manda el logout contra el borde derecho. */
+  .navbar-tools {
+    flex-basis: 100%;
+    justify-content: space-between;
+  }
 }

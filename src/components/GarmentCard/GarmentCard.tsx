@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 import type { Garment } from "../../domain/Garment"
 import "./garmentCard.css"
 
@@ -5,6 +6,8 @@ import "./garmentCard.css"
 const FORMALITY_LEVELS = [1, 2, 3, 4, 5]
 
 const GarmentCard = ({ garment }: { garment: Garment }) => {
+  const { t } = useTranslation("garments")
+
   return (
     <article className={`garment-card ${garment.active ? "" : "is-archived"}`}>
 
@@ -17,7 +20,7 @@ const GarmentCard = ({ garment }: { garment: Garment }) => {
 
         {garment.category && <span className="garment-card-chip is-category">{garment.category}</span>}
 
-        <span className="garment-card-chip is-season">{garment.season}</span>
+        <span className="garment-card-chip is-season">{t(`season.${garment.season}`)}</span>
 
         {!garment.active && <span className="garment-card-stamp">archivada</span>}
       </figure>
@@ -44,11 +47,9 @@ const GarmentCard = ({ garment }: { garment: Garment }) => {
           {garment.material && <span className="garment-card-material">{garment.material}</span>}
         </div>
 
-        {/* TODO i18n: estos son los valores crudos del enum ("striped", "slim").
-            Van a querer pasar por t() con claves garment.pattern.* y garment.fit.* */}
         <ul className="garment-card-tags">
-          <li className="garment-card-tag">{garment.pattern}</li>
-          <li className="garment-card-tag">{garment.fit}</li>
+          <li className="garment-card-tag">{t(`pattern.${garment.pattern}`)}</li>
+          <li className="garment-card-tag">{t(`fit.${garment.fit}`)}</li>
         </ul>
 
         <footer className="garment-card-formality" title={`Formalidad ${garment.formality} de 5`}>

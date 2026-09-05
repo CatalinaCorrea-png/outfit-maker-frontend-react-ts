@@ -5,9 +5,11 @@ import LanguageDetector from "i18next-browser-languagedetector"
 import esCommon from "./locales/es/common.json"
 import esAuth from "./locales/es/auth.json"
 import esErrors from "./locales/es/errors.json"
+import esGarments from "./locales/es/garments.json"
 import enCommon from "./locales/en/common.json"
 import enAuth from "./locales/en/auth.json"
 import enErrors from "./locales/en/errors.json"
+import enGarments from "./locales/en/garments.json"
 
 export const SUPPORTED_LANGUAGES = ["es", "en"] as const
 export type Language = (typeof SUPPORTED_LANGUAGES)[number]
@@ -15,8 +17,8 @@ export type Language = (typeof SUPPORTED_LANGUAGES)[number]
 export const defaultNS = "common"
 
 export const resources = {
-  es: { common: esCommon, auth: esAuth, errors: esErrors },
-  en: { common: enCommon, auth: enAuth, errors: enErrors },
+  es: { common: esCommon, auth: esAuth, errors: esErrors, garments: esGarments },
+  en: { common: enCommon, auth: enAuth, errors: enErrors, garments: enGarments },
 } as const
 
 i18n
@@ -25,7 +27,7 @@ i18n
   .init({
     resources,
     defaultNS,
-    ns: ["common", "auth", "errors"],
+    ns: ["common", "auth", "errors", "garments"],
     fallbackLng: "es",
     supportedLngs: [...SUPPORTED_LANGUAGES],
     // "es-AR" y "en-US" del navegador colapsan a "es" y "en"
