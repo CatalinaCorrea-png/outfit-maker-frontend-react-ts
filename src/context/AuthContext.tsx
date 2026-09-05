@@ -91,13 +91,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     tokenService.setOnRefresh(renewSession)
     return () => { tokenService.setOnRefresh(null) }
+    // renewSession no lee estado: saca todo de storage y usa setUser(prev => ...),
+    // así que la clausura vacía no queda desactualizada.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   useEffect(() => {
     // console.log("Hubo un cambio en user")
     if (!user) return
 
-    const sessionExpiresAt = (user as any).sessionExpiresAt
+    const sessionExpiresAt = user.sessionExpiresAt
     if (!sessionExpiresAt) return
 
     const msUntilExpiry = sessionExpiresAt - Date.now()
@@ -121,7 +124,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const handleVisibilityChange = () => {
       if (document.visibilityState !== "visible" || !user) return
 
-      const sessionExpiresAt = (user as any).sessionExpiresAt
+      const sessionExpiresAt = user.sessionExpiresAt
       if (sessionExpiresAt && Date.now() >= sessionExpiresAt) {
         setSessionExpiredModal(true)
       }

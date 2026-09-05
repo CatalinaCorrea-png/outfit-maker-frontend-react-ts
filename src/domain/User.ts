@@ -1,5 +1,5 @@
 import { ValidationMessage } from "../components/ValidationField/ValidationMessage"
-
+import type { ValidationKey } from "../components/ValidationField/ValidationMessage"
 
 export type UserJSONResponse = {
     accessToken: string
@@ -26,7 +26,7 @@ export class User {
 		this.avatarUrl = avatarUrl.trim()
 	}
 
-	addError(field: string, message: string) {
+	addError(field: string, message: ValidationKey) {
     this.errors.push(new ValidationMessage(field, message))
   }
     
@@ -34,16 +34,16 @@ export class User {
     this.errors = []
 
     if (!this.email?.trim()) {
-      this.addError("email", "Debe ingresar un email")
+      this.addError("email", "validation.emailRequired")
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       if (!emailRegex.test(this.email)) {
-        this.addError("email", "El formato del email no es válido")
+        this.addError("email", "validation.emailInvalid")
       }
     }
 
     if (!this.password) {
-      this.addError("password", "Debe ingresar una contraseña")
+      this.addError("password", "validation.passwordRequired")
     }
 
     return this.errors

@@ -5,13 +5,14 @@
   justify-content: flex-start;
   width: 45px;
   height: 45px;
-  border: none;
+  /* trazo de tinta + sombra dura: el lenguaje compartido del sistema */
+  border: var(--stroke-w) solid var(--ink);
   border-radius: 50%;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   transition-duration: .3s;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  box-shadow: var(--pop-sm);
   background-color: rgb(255, 65, 65);
 }
 
@@ -38,8 +39,10 @@
   width: 0%;
   opacity: 0;
   color: white;
-  font-size: 1.2em;
-  font-weight: 600;
+  font-family: var(--font-ui);
+  font-size: 0.95em;
+  font-weight: 700;
+  white-space: nowrap;
   transition-duration: .3s;
 }
 /* hover effect on button width */
@@ -64,4 +67,6 @@
 /* button click effect*/
 .Btn:active {
   transform: translate(2px ,2px);
+  /* al hundirse pierde la sombra, igual que la tecla del login */
+  box-shadow: none;
 }

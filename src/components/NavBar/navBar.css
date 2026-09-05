@@ -1,0 +1,124 @@
+/* ═══ NavBar · los separadores de colores de la carpeta ═══
+   Si el login es una hoja de cuaderno, la navegación son las pestañas
+   que asoman de la carpeta: cada sección tiene su color fijo. */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem 1rem;
+  padding: 0.7rem 1.2rem;
+  box-sizing: border-box;
+  border-bottom: var(--stroke-w) solid var(--ink);
+  background-color: var(--paper);
+  /* segunda línea pastel debajo del trazo: el renglón doble del cuaderno */
+  box-shadow: 0 4px 0 var(--lilac);
+}
+
+.navbar-brand {
+  /* empuja links y herramientas contra el borde derecho */
+  margin-right: auto;
+  font-family: var(--font-ui);
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--pink);
+  text-shadow: 2px 2px 0 var(--ink);
+  user-select: none;
+}
+
+/* ── Pestañas ───────────────────────────────────────────────── */
+
+.navbar-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.navbar-link {
+  padding: 0.34rem 0.85rem;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 999px;
+  background-color: var(--paper);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--ink);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.navbar-link:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--pop-sm);
+}
+
+.navbar-link:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+/* Ruta actual: queda pegada con sombra dura y apenas torcida,
+   como un sticker puesto a mano. Es la única pestaña con color. */
+.navbar-link.is-active {
+  transform: rotate(-1.5deg);
+  box-shadow: var(--pop-sm);
+}
+
+/* Cada sección se enciende en su propio color al estar activa.
+   Como solo una lo está a la vez, la barra nunca muestra más de uno. */
+.navbar-link.is-active:nth-child(1) { background-color: var(--pink-soft); }
+.navbar-link.is-active:nth-child(2) { background-color: var(--lilac-soft); }
+.navbar-link.is-active:nth-child(3) { background-color: var(--mint); }
+.navbar-link.is-active:nth-child(4) { background-color: var(--sky); }
+.navbar-link.is-active:nth-child(5) { background-color: var(--butter); }
+
+.navbar-link.is-active:hover {
+  transform: rotate(-1.5deg) translate(-1px, -1px);
+}
+
+.navbar-link.is-active:active {
+  transform: rotate(-1.5deg) translate(1px, 1px);
+  box-shadow: none;
+}
+
+/* ── Idioma y salida ────────────────────────────────────────── */
+
+.navbar-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+/* Reserva el ancho que el botón de salir ocupa expandido (125px),
+   para que al pasarle el mouse no se mueva el resto de la barra */
+.navbar-logout {
+  display: flex;
+  flex-direction: row-reverse;
+  flex: none;
+  width: 130px;
+}
+
+/* ── Angosto ────────────────────────────────────────────────── */
+
+@media (max-width: 60rem) {
+  .navbar { padding: 0.6rem 0.9rem; }
+  .navbar-brand { font-size: 1.3rem; }
+  .navbar-link { padding: 0.3rem 0.7rem; font-size: 0.8rem; }
+}
+
+/* Marca y herramientas arriba, pestañas en su propio renglón */
+@media (max-width: 40rem) {
+  .navbar-links {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: center;
+  }
+}

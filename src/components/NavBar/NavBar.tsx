@@ -1,24 +1,33 @@
-import { Link } from "react-router"
+import { NavLink } from "react-router"
+import { useTranslation } from "react-i18next"
 import LogoutButton from "../LogoutButton/LogoutButton"
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher"
+import "./navBar.css"
 
+const linkClass = ({ isActive }: { isActive: boolean }) =>
+  isActive ? "navbar-link is-active" : "navbar-link"
 
 const NavBar = () => {
-  
-  return (
-    <div className="flex justify-between items-center p-4 bg-gray-800 text-white">
-      <div>
-        <h3>OutfitMaker ✧</h3>
-      </div>
-      <div className="flex items-center">
-        <Link to="/" className="mr-4 hover:underline">Wardrobe</Link>
-        <Link to="/outfits" className="mr-4 hover:underline">Outfits</Link>
-        <Link to="/categories" className="mr-4 hover:underline">Categories</Link>
-        <Link to="/create-outfit" className="mr-4 hover:underline">Create An Outfit</Link>
-        <Link to="/add-garment" className="mr-4 hover:underline">Add Garment</Link>
+  const { t } = useTranslation("common")
 
-        <div className="w-30 flex flex-row-reverse"><LogoutButton /></div>
+  return (
+    <nav className="navbar">
+      <span className="navbar-brand">outfit maker ✧</span>
+
+      <div className="navbar-links">
+        {/* end: sin esto "/" queda activo en todas las rutas */}
+        <NavLink to="/" end className={linkClass}>{t("nav.wardrobe")}</NavLink>
+        <NavLink to="/outfits" className={linkClass}>{t("nav.outfits")}</NavLink>
+        <NavLink to="/categories" className={linkClass}>{t("nav.categories")}</NavLink>
+        <NavLink to="/create-outfit" className={linkClass}>{t("nav.createOutfit")}</NavLink>
+        <NavLink to="/add-garment" className={linkClass}>{t("nav.addGarment")}</NavLink>
       </div>
-    </div>
+
+      <div className="navbar-tools">
+        <LanguageSwitcher />
+        <div className="navbar-logout"><LogoutButton /></div>
+      </div>
+    </nav>
   )
 }
 

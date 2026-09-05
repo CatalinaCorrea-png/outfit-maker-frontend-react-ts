@@ -8,5 +8,6 @@ Cada vez que cambie alguno de los valores dentro de 'args'.
 export const useOnInit = (initialCallBack: () => void) => {
     useEffect(() => {
         initialCallBack()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 }

@@ -1,11 +1,21 @@
 /* ═══ Login · hoja de cuaderno pegada sobre el fondo y2k ═══ */
 
 .login-screen {
-  min-height: 100dvh;
-  display: grid;
-  place-items: center;
-  /* el padding lateral deja lugar al voladizo de .login-tape */
-  padding: 2.5rem 1.4rem;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    /* Sin esto las dos filas se estiran a media pantalla cada una.
+       align-content las empaqueta a su altura real y centra el grupo. */
+    align-content: center;
+    gap: 1.6rem;
+    position: relative;
+    padding: 4.2rem 1.4rem 2.5rem;
+  }
+.login-lang {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  z-index: 2;
 }
 
 .login-card {
@@ -192,6 +202,14 @@
   font-size: 0.7rem;
   text-align: center;
   color: var(--ink-soft);
+}
+
+.login-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.6rem;
 }
 
 /* ── Angosto ────────────────────────────────────────────────── */

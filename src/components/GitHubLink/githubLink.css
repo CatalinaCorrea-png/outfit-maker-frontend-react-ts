@@ -4,16 +4,16 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  margin-top: 1.4rem;
+  /* margin-top: 1.4rem; */
   padding: 0.3rem 0.6rem;
   border-radius: 999px;
   font-family: var(--font-hand);
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   line-height: 1.4;
   text-align: center;
   text-decoration: none;
   color: var(--ink-soft);
-  opacity: 0.75;
+  opacity: 0.9;
   transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .github-link-icon {
-  width: 1.05rem;
-  height: 1.05rem;
+  width: 1.2rem;
+  height: 1.2rem;
   flex-shrink: 0;
 }
