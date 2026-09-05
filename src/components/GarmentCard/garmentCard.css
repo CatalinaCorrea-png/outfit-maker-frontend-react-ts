@@ -1,0 +1,283 @@
+/* Ficha de prenda: una tarjeta de papel pegada al cuaderno.
+   Mismo lenguaje que el resto: tinta 2px, sombra dura sin blur y esquinas
+   redondeadas. La foto manda; los datos son anotaciones al pie. */
+
+.garment-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 260px;
+  overflow: hidden;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: var(--r-lg);
+  background-color: var(--paper);
+  box-shadow: var(--pop);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.garment-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--pop-lg);
+}
+
+/* ── Foto ────────────────────────────────────────────────────────── */
+
+.garment-card-photo {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  border-bottom: var(--stroke-w) solid var(--ink);
+  background-color: var(--paper-shade);
+  /* rayas diagonales del cuaderno mientras no haya imagen */
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.6) 0 6px,
+    transparent 6px 16px
+  );
+}
+
+/* Ocupa toda la figura: el grid la centraría si no le damos medida */
+.garment-card-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.garment-card-photo-empty {
+  font-size: 3.5rem;
+  filter: saturate(0.6);
+  opacity: 0.75;
+}
+
+/* ── Chips sobre la foto ─────────────────────────────────────────── */
+
+.garment-card-chip {
+  position: absolute;
+  top: 10px;
+  padding: 3px 10px;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 999px;
+  background-color: var(--paper);
+  box-shadow: var(--pop-sm);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.garment-card-chip.is-category {
+  left: 10px;
+  background-color: var(--pink-soft);
+  color: var(--pink-ink);
+}
+
+.garment-card-chip.is-season {
+  right: 10px;
+  background-color: var(--sky);
+}
+
+/* Sello de prenda archivada (soft delete) */
+.garment-card-stamp {
+  position: absolute;
+  padding: 4px 16px;
+  transform: rotate(-14deg);
+  border: 3px solid var(--pink-deep);
+  border-radius: var(--r-sm);
+  color: var(--pink-deep);
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  background-color: rgba(255, 253, 246, 0.85);
+}
+
+.garment-card.is-archived .garment-card-photo-empty,
+.garment-card.is-archived .garment-card-img {
+  filter: grayscale(1);
+  opacity: 0.4;
+}
+
+/* ── Cuerpo ──────────────────────────────────────────────────────── */
+
+.garment-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px 14px;
+}
+
+.garment-card-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.garment-card-name {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  /* los nombres largos se cortan: la card no crece */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.garment-card-brand {
+  margin: 0;
+  font-family: var(--font-hand);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+/* ── Colores + material ──────────────────────────────────────────── */
+
+.garment-card-colors {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.garment-card-swatch {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 50%;
+  /* cuadriculado abajo: si el color no es válido en CSS, se nota */
+  background-color: var(--paper-shade);
+}
+
+.garment-card-material {
+  margin-left: 2px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+/* ── Tags (pattern / fit) ────────────────────────────────────────── */
+
+.garment-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.garment-card-tag {
+  padding: 2px 9px;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 999px;
+  background-color: var(--lilac-soft);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+/* ── Formalidad: 5 puntitos, 1 deportivo → 5 formal ──────────────── */
+
+.garment-card-formality {
+  display: flex;
+  gap: 5px;
+  padding-top: 2px;
+}
+
+.garment-card-dot {
+  width: 11px;
+  height: 11px;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 50%;
+  background-color: var(--paper);
+}
+
+.garment-card-dot.is-on {
+  background-color: var(--butter);
+}
+
+/* Prenda archivada: sigue legible pero apagada */
+.garment-card.is-archived {
+  box-shadow: var(--pop-sm);
+}
+
+.garment-card.is-archived .garment-card-body {
+  opacity: 0.6;
+}
+
+/* ── Mobile: 2-3 por fila, así que todo escala hacia abajo ───────── */
+
+@media (max-width: 640px) {
+  .garment-card {
+    max-width: none;
+    border-radius: var(--r-md);
+    box-shadow: var(--pop-sm);
+  }
+
+  .garment-card-photo-empty {
+    font-size: 2.4rem;
+  }
+
+  /* A este ancho los dos chips arriba se pisan: la temporada baja */
+  .garment-card-chip {
+    top: 7px;
+    padding: 2px 7px;
+    font-size: 0.6rem;
+    box-shadow: none;
+  }
+
+  .garment-card-chip.is-category {
+    left: 7px;
+  }
+
+  .garment-card-chip.is-season {
+    top: auto;
+    bottom: 7px;
+    right: 7px;
+  }
+
+  .garment-card-stamp {
+    padding: 3px 10px;
+    font-size: 0.85rem;
+  }
+
+  .garment-card-body {
+    gap: 7px;
+    padding: 9px 10px 11px;
+  }
+
+  .garment-card-name {
+    font-size: 0.85rem;
+  }
+
+  .garment-card-brand {
+    font-size: 0.7rem;
+  }
+
+  .garment-card-swatch {
+    width: 14px;
+    height: 14px;
+  }
+
+  .garment-card-material {
+    font-size: 0.68rem;
+  }
+
+  .garment-card-tags {
+    gap: 4px;
+  }
+
+  .garment-card-tag {
+    padding: 1px 7px;
+    font-size: 0.6rem;
+  }
+
+  .garment-card-formality {
+    gap: 4px;
+  }
+
+  .garment-card-dot {
+    width: 9px;
+    height: 9px;
+  }
+}

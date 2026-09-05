@@ -2,7 +2,18 @@
   "validation": {
     "emailRequired": "Debe ingresar un email",
     "emailInvalid": "El formato del email no es válido",
-    "passwordRequired": "Debe ingresar una contraseña"
+    "passwordRequired": "Debe ingresar una contraseña",
+    "nameRequired": "Debe ingresar un nombre",
+    "categoryRequired": "Debe seleccionar una categoría",
+    "primaryColorRequired": "Debe seleccionar un color principal",
+    "primaryColorInvalid": "El color principal no es válido",
+    "secondaryColorInvalid": "El color secundario no es válido",
+    "formalityRequired": "Debe ingresar un nivel de formalidad",
+    "formalityRange": "El nivel de formalidad debe estar entre 1 y 5",
+    "patternInvalid": "El patrón no es válido",
+    "fitInvalid": "La talla no es válida",
+    "seasonInvalid": "La temporada no es válida",
+    "tooLong": "Máximo {{max}} caracteres"
   },
   "http": {
     "server": "Ocurrió un error, consultá al administrador.",

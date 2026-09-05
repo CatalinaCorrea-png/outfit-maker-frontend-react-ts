@@ -1,15 +1,5 @@
 import { ValidationMessage } from "../components/ValidationField/ValidationMessage"
-import type { ValidationKey } from "../components/ValidationField/ValidationMessage"
-
-export type UserJSONResponse = {
-    accessToken: string
-    refreshToken: string
-    expirationTime: number
-    id: string
-    email: string
-    displayName: string
-    avatarUrl: string
-}
+import type { ValidationKey, ValidationParams } from "../components/ValidationField/ValidationMessage"
 
 export class User {
 	errors: ValidationMessage[] = []
@@ -26,8 +16,8 @@ export class User {
 		this.avatarUrl = avatarUrl.trim()
 	}
 
-	addError(field: string, message: ValidationKey) {
-    this.errors.push(new ValidationMessage(field, message))
+	addError(field: string, message: ValidationKey, params?: ValidationParams) {
+    this.errors.push(new ValidationMessage(field, message, params))
   }
     
   validateLogin() {

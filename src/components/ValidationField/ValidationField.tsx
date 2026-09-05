@@ -20,7 +20,7 @@ const ValidationField = ({ field, errors }: { field: string; errors: ValidationM
       ? ""
       : errors
           .filter((_) => _.field === field)
-          .map((_) => t(_.message))
+          .map((_) => t(_.message, _.params))
           .join(". ")
 
     return (

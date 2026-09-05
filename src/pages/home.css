@@ -1,0 +1,42 @@
+/* Placard: las fichas de prenda pegadas sobre el cuaderno.
+   La grilla se acomoda sola; la card ya trae su propio max-width. */
+
+.home {
+  padding: 28px 20px 48px;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 26px;
+  justify-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Mobile: la card se achica y entran 2 columnas (3 desde ~600px).
+   El detalle de la prenda es el lugar para verla grande. */
+@media (max-width: 640px) {
+  .home {
+    padding: 16px 12px 36px;
+  }
+
+  .home-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+}
+
+.home-empty {
+  margin: 64px auto;
+  max-width: 420px;
+  padding: 18px 22px;
+  border: var(--stroke-w) dashed var(--ink-soft);
+  border-radius: var(--r-lg);
+  background-color: var(--paper);
+  box-shadow: var(--pop-sm);
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--ink-soft);
+  text-align: center;
+}

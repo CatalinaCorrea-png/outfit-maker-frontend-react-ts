@@ -2,7 +2,18 @@
   "validation": {
     "emailRequired": "Enter your email",
     "emailInvalid": "That email doesn't look valid",
-    "passwordRequired": "Enter your password"
+    "passwordRequired": "Enter your password",
+    "nameRequired": "Enter your name",
+    "categoryRequired": "Select a category",
+    "primaryColorRequired": "Select a primary color",
+    "primaryColorInvalid": "Invalid primary color",
+    "secondaryColorInvalid": "Invalid secondary color",
+    "formalityRequired": "Enter a formality level",
+    "formalityRange": "Formality level must be between 1 and 5",
+    "patternInvalid": "Invalid pattern",
+    "fitInvalid": "Invalid fit",
+    "seasonInvalid": "Invalid season",
+    "tooLong": "{{max}} characters max"
   },
   "http": {
     "server": "Something went wrong on our side. Try again later.",
