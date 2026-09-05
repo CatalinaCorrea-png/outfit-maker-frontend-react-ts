@@ -53,10 +53,15 @@ const processQueue = (error: unknown, token: string | null) => {
   failedQueue = []
 }
 
-const isExpiredTokenError = (error: AxiosError): boolean => {
+// Cubre token expirado, inválido y ausente (después de un F5 el access token
+// no está en memoria y la request sale sin header).
+const isAuthError = (error: AxiosError): boolean => {
   if (error.response?.status !== 401) return false
-  const header = error.response.headers["www-authenticate"]
-  return typeof header === "string" && header.includes("invalid_token")
+
+  // Los endpoints de auth resuelven su propio 401 (credenciales inválidas)
+  if (error.config?.url?.includes("/auth")) return false
+
+  return true
 }
 
 const responseErrorHandler = async (error: AxiosError) => {
@@ -64,10 +69,10 @@ const responseErrorHandler = async (error: AxiosError) => {
 
   if (
     !originalRequest ||
-    !isExpiredTokenError(error) ||
+    !isAuthError(error) ||
     originalRequest._retry
   ) {
-    // console.log("El error no es de expiracion.")
+    // console.log("El error no es de autenticacion.")
     return Promise.reject(error)
   }
 
