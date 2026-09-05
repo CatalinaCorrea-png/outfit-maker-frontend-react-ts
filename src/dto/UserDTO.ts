@@ -3,7 +3,5 @@ export type UserJSONResponse = {
   refreshToken: string
   expirationTime: number
   id: string
-  email: string
-  displayName: string
-  avatarUrl: string
+  name: string
 }

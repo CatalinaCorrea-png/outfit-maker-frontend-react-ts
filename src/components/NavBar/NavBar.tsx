@@ -2,6 +2,7 @@ import { NavLink } from "react-router"
 import { useTranslation } from "react-i18next"
 import LogoutButton from "../LogoutButton/LogoutButton"
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher"
+import { getName } from "../../context/AuthContext"
 import "./navBar.css"
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -9,10 +10,10 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
 
 const NavBar = () => {
   const { t } = useTranslation("common")
-
+  const userName = getName()
   return (
     <nav className="navbar">
-      <span className="navbar-brand">outfit maker ✧</span>
+      <span className="navbar-brand">{`${userName}'s`} outfit maker ✧</span>
 
       <div className="navbar-links">
         {/* end: sin esto "/" queda activo en todas las rutas */}

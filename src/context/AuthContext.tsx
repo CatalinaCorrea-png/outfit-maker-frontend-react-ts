@@ -5,6 +5,7 @@ import { tokenMemory, tokenService } from "../services/tokenService"
 
 export interface AuthUser {
   id: string
+  name: string
   accessToken: string
   refreshToken: string
   sessionExpiresAt: number
@@ -23,6 +24,17 @@ export const getId = (): string | null => {
   try {
     const stored = localStorage.getItem("user") || sessionStorage.getItem("user")
     return stored ? (JSON.parse(stored) as Omit<AuthUser, 'accessToken'>).id : null
+  } catch {
+    localStorage.removeItem("user")
+    sessionStorage.removeItem("user")
+    return null
+  }
+}
+
+export const getName = (): string | null => {
+  try {
+    const stored = localStorage.getItem("user") || sessionStorage.getItem("user")
+    return stored ? (JSON.parse(stored) as Omit<AuthUser, 'accessToken'>).name : null
   } catch {
     localStorage.removeItem("user")
     sessionStorage.removeItem("user")

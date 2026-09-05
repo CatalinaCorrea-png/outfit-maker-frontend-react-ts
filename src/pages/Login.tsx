@@ -40,6 +40,7 @@ const Login = () => {
 				// console.log("Usuario logueado:", userLogged)
 				const userData : Omit<AuthUser, 'accessToken'> = {
 					id: userLogged.id,
+					name: userLogged.name,
 					refreshToken: userLogged.refreshToken,
 					sessionExpiresAt: 0
 				}

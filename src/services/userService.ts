@@ -1,5 +1,5 @@
 import axios from "axios"
-import { type UserJSONResponse } from "../domain/User"
+import { type UserJSONResponse } from "..//dto/UserDTO"
 
 class UserService {
 
