@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react'
+import { NavLink } from 'react-router'
 import "./chipButton.css"
 
 type ChipButtonProps = {
@@ -7,11 +8,24 @@ type ChipButtonProps = {
     onClick?: () => void;
     // solid = acción principal (rosa), ghost = secundaria (papel)
     variant?: "solid" | "ghost";
+    // Si viene, se renderiza como link: así andan el ctrl+click,
+    // el "abrir en pestaña nueva" y el botón de atrás del navegador.
+    to?: string;
 }
 
-const ChipButton = ({ text, type = 'button', onClick, variant = "solid" }: ChipButtonProps) => {
+const ChipButton = ({ text, type = 'button', onClick, variant = "solid", to }: ChipButtonProps) => {
+  const className = `chip-button is-${variant}`
+
+  if (to) {
+    return (
+      <NavLink to={to} className={className} onClick={onClick}>
+          {text}
+      </NavLink>
+    )
+  }
+
   return (
-    <button className={`chip-button is-${variant}`} type={type} onClick={onClick}>
+    <button className={className} type={type} onClick={onClick}>
         {text}
     </button>
   )

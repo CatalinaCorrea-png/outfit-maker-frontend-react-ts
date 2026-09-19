@@ -1,5 +1,7 @@
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 import type { Garment } from "../domain/Garment"
+import ChipButton from "../components/ChipButton/ChipButton"
 import GarmentCard from "../components/GarmentCard/GarmentCard"
 import { garmentService } from "../services/garmentService"
 import { useOnInit } from "../hooks/useOnInit"
@@ -28,6 +30,7 @@ const initialSortOptions: SortOption[] = [
 ]
 
 const Home = () => {
+  const { t } = useTranslation("common")
   const [garments, setGarments] = useState<Garment[]>([])
   const [filters, setFilters] = useState<GarmentFilters>(initialFilters)
 
@@ -54,6 +57,10 @@ const Home = () => {
       sendFilters={getFilteredGarments}
       />
       <div className="home-content">
+        <div className="home-actions">
+          <ChipButton text={t("nav.addGarment")} to="/add-garment" />
+        </div>
+
         {garments.length === 0 ? (
           <p className="home-empty">todavía no hay prendas en el placard ✧</p>
         ) : (

@@ -2,6 +2,11 @@
    con sombra dura. Para acciones que no merecen la tecla 3D del KeyButton. */
 
 .chip-button {
+  /* inline-flex + text-decoration: como <a> no centra ni se des-subraya solo */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   padding: 0.36rem 1rem;
   border: var(--stroke-w) solid var(--ink);
   border-radius: 999px;
