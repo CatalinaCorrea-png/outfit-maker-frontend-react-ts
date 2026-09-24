@@ -1,0 +1,41 @@
+{
+  "top": {
+    "login": "Log in",
+    "toWardrobe": "My wardrobe"
+  },
+  "hero": {
+    "kicker": "your wardrobe, but in a notebook",
+    "lead": "Add your clothes once and stop wondering what to wear: build outfits from what you already own, or ask the AI for one.",
+    "ctaGuest": "Get started ✧",
+    "ctaUser": "Go to my wardrobe ✧",
+    "photoCaption": "my wardrobe ✧"
+  },
+  "howTo": {
+    "title": "How it works",
+    "subtitle": "four steps, zero drama"
+  },
+  "steps": {
+    "login": {
+      "title": "Log in",
+      "body": "Sign in with your email and password. Your wardrobe is yours alone: nobody else sees your clothes."
+    },
+    "garments": {
+      "title": "Add your clothes",
+      "body": "Add each piece with a photo and the basics: category, colors, season and how formal it is."
+    },
+    "outfits": {
+      "title": "Build outfits",
+      "body": "Pick pieces from your wardrobe and layer them: the tee underneath, the shirt on top, the jacket outside."
+    },
+    "ai": {
+      "title": "Ask the AI for one",
+      "body": "Tell it what you need in one sentence and the AI builds an outfit using only your clothes. If you like it, save it.",
+      "example": "something comfy for a rainy friday",
+      "badge": "AI ✧"
+    }
+  },
+  "outro": {
+    "title": "Ready?",
+    "body": "Your next outfit is already in your wardrobe. You just have to find it."
+  }
+}

@@ -11,6 +11,14 @@
     position: relative;
     padding: 4.2rem 1.4rem 2.5rem;
   }
+/* Marca a la izquierda (vuelve a la landing) e idioma a la derecha */
+.login-brand {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.4rem;
+  z-index: 2;
+}
+
 .login-lang {
   position: absolute;
   top: 1.2rem;

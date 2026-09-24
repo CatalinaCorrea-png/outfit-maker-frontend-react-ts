@@ -27,6 +27,7 @@
   line-height: 1.1;
   letter-spacing: -0.015em;
   color: var(--pink);
+  text-decoration: none;
   text-shadow: 2px 2px 0 var(--ink);
   user-select: none;
 }

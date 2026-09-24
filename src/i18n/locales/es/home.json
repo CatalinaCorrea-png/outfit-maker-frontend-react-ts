@@ -1,0 +1,41 @@
+{
+  "top": {
+    "login": "Entrar",
+    "toWardrobe": "Mi placard"
+  },
+  "hero": {
+    "kicker": "tu placard, pero en un cuaderno",
+    "lead": "Cargá tu ropa una vez y dejá de pensar qué ponerte: armá outfits con lo que ya tenés, o pedile uno a la IA.",
+    "ctaGuest": "Empezar ✧",
+    "ctaUser": "Ir a mi placard ✧",
+    "photoCaption": "mi placard ✧"
+  },
+  "howTo": {
+    "title": "Cómo se usa",
+    "subtitle": "cuatro pasos, cero drama"
+  },
+  "steps": {
+    "login": {
+      "title": "Iniciá sesión",
+      "body": "Entrá con tu email y tu contraseña. Tu placard es solo tuyo: nadie más ve tu ropa."
+    },
+    "garments": {
+      "title": "Cargá tus prendas",
+      "body": "Agregá cada prenda con una foto y lo básico: categoría, colores, temporada y qué tan formal es."
+    },
+    "outfits": {
+      "title": "Armá outfits",
+      "body": "Elegí prendas de tu placard y combinalas en capas: la remera abajo, la camisa encima, la campera afuera."
+    },
+    "ai": {
+      "title": "Pedile uno a la IA",
+      "body": "Contale en una frase qué necesitás y la IA te arma un outfit solo con tu ropa. Si te gusta, lo guardás.",
+      "example": "algo cómodo para un viernes de lluvia",
+      "badge": "IA ✧"
+    }
+  },
+  "outro": {
+    "title": "¿Arrancamos?",
+    "body": "Tu próximo outfit ya está en tu placard. Solo falta encontrarlo."
+  }
+}

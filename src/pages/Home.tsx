@@ -1,77 +1,149 @@
-import { useState } from "react"
+import { Link } from "react-router"
 import { useTranslation } from "react-i18next"
-import type { Garment } from "../domain/Garment"
-import ChipButton from "../components/ChipButton/ChipButton"
-import GarmentCard from "../components/GarmentCard/GarmentCard"
-import { garmentService } from "../services/garmentService"
-import { useOnInit } from "../hooks/useOnInit"
-import { showToast } from "../utils/toast"
+import { useAuth } from "../context/AuthContext"
+import LanguageSwitcher from "../components/LanguageSwitcher/LanguageSwitcher"
+import BrandLink from "../components/BrandLink/BrandLink"
+import GitHubLink from "../components/GitHubLink/GitHubLink"
+import Polaroid, { type PhotoBackground, type TapeColor } from "../components/Polaroid/Polaroid"
+import {
+  DoodleAddGarment,
+  DoodleHanger,
+  DoodleLogin,
+  DoodleOutfit,
+  DoodleSparkles,
+} from "../components/Doodles/Doodles"
 import "./home.css"
-import type { GarmentFilters } from "../dto/GarmentDTO"
-import Filters, { type SortOption } from "../components/GarmentFilters/GarmentFilters"
 
-const initialFilters: GarmentFilters = {
-  category: null,
-  name: null,
-  brand: null,
-  pattern: null,
-  formality: null,
-  season: null,
-  active: null,
-  page: 0,
-  pageSize: 12,
-  sortBy: "name",
-  ascending: true
+type StepKey = "login" | "garments" | "outfits" | "ai"
+
+type Step = {
+  key: StepKey
+  tape: TapeColor
+  background: PhotoBackground
+  tilt: number
 }
 
-const initialSortOptions: SortOption[] = [
-  { label: "filters.sortOptName", value: "name", current: true },
-  { label: "filters.sortOptCreatedAt", value: "createdAt", current: false },
+// El orden es el recorrido de uso: entrar → cargar → combinar → pedirle a la IA
+const steps: Step[] = [
+  { key: "login", tape: "butter", background: "grid", tilt: -2.5 },
+  { key: "garments", tape: "mint", background: "dots", tilt: 1.8 },
+  { key: "outfits", tape: "sky", background: "stripes", tilt: -1.2 },
+  { key: "ai", tape: "pink", background: "paper", tilt: 2.2 },
 ]
 
 const Home = () => {
-  const { t } = useTranslation("common")
-  const [garments, setGarments] = useState<Garment[]>([])
-  const [filters, setFilters] = useState<GarmentFilters>(initialFilters)
+  const { t } = useTranslation("home")
+  const { user } = useAuth()
 
-  const getFilteredGarments = async (filters: GarmentFilters) => {
-    try {
-      const response = await garmentService.getGarments(filters)
-      setGarments(response)
-    } catch(error) {
-      showToast.httpError(error)
+  // Con sesión iniciada, los accesos llevan directo al placard
+  const ctaTo = user ? "/garments" : "/login"
+  const ctaText = user ? t("hero.ctaUser") : t("hero.ctaGuest")
+
+  const photoFor = (key: StepKey) => {
+    switch (key) {
+      case "login":
+        return <DoodleLogin />
+      case "garments":
+        return <DoodleAddGarment />
+      case "outfits":
+        return <DoodleOutfit />
+      case "ai":
+        return (
+          <>
+            <p className="landing-bubble">“{t("steps.ai.example")}”</p>
+            <DoodleSparkles />
+          </>
+        )
     }
   }
 
-  useOnInit(() => {
-    getFilteredGarments(initialFilters)
-  })
-
   return (
-    <main className="home">
-      <Filters 
-      initialFilters={initialFilters} 
-      initialSortOptions={initialSortOptions} 
-      filters={filters} 
-      setFilters={setFilters} 
-      sendFilters={getFilteredGarments}
-      />
-      <div className="home-content">
-        <div className="home-actions">
-          <ChipButton text={t("nav.addGarment")} to="/add-garment" />
+    <div className="landing">
+      <header className="landing-top">
+        <BrandLink />
+        <div className="landing-tools">
+          <LanguageSwitcher />
+          <Link to={ctaTo} className="landing-top-link">
+            {user ? t("top.toWardrobe") : t("top.login")}
+          </Link>
         </div>
+      </header>
 
-        {garments.length === 0 ? (
-          <p className="home-empty">todavía no hay prendas en el placard ✧</p>
-        ) : (
-          <div className="home-grid">
-            {garments.map((garment: Garment) => (
-              <GarmentCard key={garment.id} garment={garment} />
-            ))}
+      <main className="landing-main">
+        {/* ── Qué es ─────────────────────────────────────────────── */}
+        <section className="landing-hero">
+          <div className="landing-sheet">
+            <div className="landing-holes" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="landing-sticker" aria-hidden="true">as if! ♡</span>
+
+            <p className="landing-kicker">{t("hero.kicker")}</p>
+            <h1 className="landing-title">
+              outfit <em>maker</em>
+            </h1>
+            <p className="landing-lead">{t("hero.lead")}</p>
+            <Link to={ctaTo} className="landing-cta">{ctaText}</Link>
           </div>
-        )}
-      </div>
-    </main>
+
+          <Polaroid
+            caption={t("hero.photoCaption")}
+            tape="lilac"
+            background="plaid"
+            tilt={3}
+            className="landing-hero-photo"
+          >
+            <DoodleHanger />
+          </Polaroid>
+        </section>
+
+        {/* ── Cómo se usa ────────────────────────────────────────── */}
+        <section className="landing-howto" aria-labelledby="landing-howto-title">
+          <header className="landing-section-head">
+            <h2 id="landing-howto-title" className="landing-section-title">
+              <span className="landing-marker">{t("howTo.title")}</span>
+            </h2>
+            <p className="landing-section-subtitle">{t("howTo.subtitle")}</p>
+          </header>
+
+          <ol className="landing-steps">
+            {steps.map((step, index) => (
+              <li key={step.key} className="landing-step">
+                <span className="landing-step-num" aria-hidden="true">{index + 1}</span>
+                {step.key === "ai" && (
+                  <span className="landing-step-badge" aria-hidden="true">{t("steps.ai.badge")}</span>
+                )}
+                <Polaroid
+                  caption={t(`steps.${step.key}.title`)}
+                  note={t(`steps.${step.key}.body`)}
+                  tape={step.tape}
+                  background={step.background}
+                  tilt={step.tilt}
+                >
+                  {photoFor(step.key)}
+                </Polaroid>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {/* ── Cierre ─────────────────────────────────────────────── */}
+        <section className="landing-outro">
+          <div className="landing-postit">
+            <span className="landing-pin" aria-hidden="true" />
+            <h2 className="landing-postit-title">{t("outro.title")}</h2>
+            <p className="landing-postit-body">{t("outro.body")}</p>
+            <Link to={ctaTo} className="landing-cta">{ctaText}</Link>
+          </div>
+        </section>
+      </main>
+
+      <footer className="landing-footer">
+        <GitHubLink />
+      </footer>
+    </div>
   )
 }
 

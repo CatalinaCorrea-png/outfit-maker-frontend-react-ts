@@ -12,6 +12,7 @@ import KeyButton from "../components/KeyButton/KeyButton"
 import "./login.css"
 import GitHubLink from "../components/GitHubLink/GitHubLink"
 import LanguageSwitcher from "../components/LanguageSwitcher/LanguageSwitcher"
+import BrandLink from "../components/BrandLink/BrandLink"
 
 
 const Login = () => {
@@ -45,7 +46,7 @@ const Login = () => {
 					sessionExpiresAt: 0
 				}
 				login(userData, userLogged.accessToken, userLogged.expirationTime, true)
-				navigate("/")
+				navigate("/garments")
 			}
 		} catch (error) {
 			showToast.httpError(error, t("loginError"))
@@ -54,6 +55,9 @@ const Login = () => {
 
   return (
 	<main className="login-screen">
+		<div className="login-brand">
+			<BrandLink />
+		</div>
 		<div className="login-lang">
 			<LanguageSwitcher />
 		</div>

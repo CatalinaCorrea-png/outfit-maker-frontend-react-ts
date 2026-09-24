@@ -1,0 +1,17 @@
+/* Mismo estilo que la marca de la NavBar */
+.brand-link {
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  color: var(--pink);
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--ink);
+}
+
+@media (max-width: 36rem) {
+  .brand-link {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,126 @@
+/* Polaroid pegada al cuaderno con cinta washi.
+   Marco de papel con el borde de abajo más ancho (ahí va el epígrafe
+   escrito a mano), trazo de tinta y la sombra dura del sistema. */
+
+.polaroid {
+  position: relative;
+  margin: 0;
+  padding: 12px 12px 16px;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 6px;
+  background-color: var(--paper);
+  box-shadow: var(--pop);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+/* Al pasar el mouse la foto se "despega" y se endereza */
+.polaroid:hover {
+  transform: rotate(0deg) translate(-3px, -3px);
+  box-shadow: var(--pop-lg);
+}
+
+/* ── Foto ────────────────────────────────────────────────────── */
+
+.polaroid-photo {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 3px;
+  background-color: var(--paper-shade);
+}
+
+.polaroid-photo > svg {
+  width: 78%;
+  height: auto;
+}
+
+/* Fondos de la foto: estampados de la misma paleta */
+.polaroid-photo.is-plaid {
+  background-color: var(--butter);
+  background-image:
+    linear-gradient(90deg, transparent 46%, rgba(255, 95, 162, 0.55) 46% 49%, transparent 49%),
+    linear-gradient(0deg, transparent 46%, rgba(255, 95, 162, 0.55) 46% 49%, transparent 49%),
+    linear-gradient(90deg, transparent 12%, rgba(58, 43, 82, 0.12) 12% 30%, transparent 30%),
+    linear-gradient(0deg, transparent 12%, rgba(58, 43, 82, 0.12) 12% 30%, transparent 30%);
+  background-size: 64px 64px;
+}
+
+.polaroid-photo.is-dots {
+  background-color: var(--pink-soft);
+  background-image: radial-gradient(rgba(255, 95, 162, 0.45) 2.5px, transparent 3px);
+  background-size: 18px 18px;
+}
+
+.polaroid-photo.is-grid {
+  background-color: #eef7ff;
+  background-image:
+    linear-gradient(var(--rule) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, var(--rule) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+.polaroid-photo.is-stripes {
+  background-color: #e6f8ef;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(183, 236, 214, 0.9) 0 10px,
+    transparent 10px 20px
+  );
+}
+
+.polaroid-photo.is-paper {
+  background-color: var(--lilac-soft);
+}
+
+/* ── Epígrafe y nota ─────────────────────────────────────────── */
+
+.polaroid-caption {
+  margin: 14px 4px 0;
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--ink);
+}
+
+.polaroid-note {
+  margin: 6px 6px 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+/* ── Cinta washi ─────────────────────────────────────────────── */
+
+/* Translúcida y con los extremos cortados a mano (clip-path en zigzag).
+   Es lo único del sistema sin trazo de tinta: la cinta real no lo tiene. */
+.polaroid-tape {
+  position: absolute;
+  z-index: 1;
+  top: -15px;
+  left: 50%;
+  width: 104px;
+  height: 28px;
+  transform: translateX(-50%) rotate(-4deg);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.45) 0 5px,
+    transparent 5px 11px
+  );
+  clip-path: polygon(
+    0 0, 5% 18%, 0 36%, 5% 54%, 0 72%, 5% 90%, 0 100%,
+    100% 100%, 95% 82%, 100% 64%, 95% 46%, 100% 28%, 95% 10%, 100% 0
+  );
+  pointer-events: none;
+}
+
+.polaroid-tape.is-pink { background-color: rgba(255, 158, 196, 0.8); }
+.polaroid-tape.is-butter { background-color: rgba(255, 226, 122, 0.85); }
+.polaroid-tape.is-mint { background-color: rgba(183, 236, 214, 0.9); }
+.polaroid-tape.is-sky { background-color: rgba(154, 212, 255, 0.85); }
+.polaroid-tape.is-lilac { background-color: rgba(192, 187, 254, 0.85); }

@@ -1,0 +1,29 @@
+/* Colores de los dibujitos: salen de la paleta del sistema (index.css) */
+
+.doodle {
+  display: block;
+  overflow: visible;
+}
+
+.doodle .ink { stroke: var(--ink); }
+.doodle .ink-fill { fill: var(--ink); }
+.doodle .none { fill: none; }
+.doodle .f-paper { fill: var(--paper); }
+.doodle .f-pink { fill: var(--pink); }
+.doodle .f-pink-soft { fill: var(--pink-soft); }
+.doodle .f-pink-mid { fill: var(--pink-mid); }
+.doodle .f-lilac { fill: var(--lilac); }
+.doodle .f-lilac-soft { fill: var(--lilac-soft); }
+.doodle .f-butter { fill: var(--butter); }
+.doodle .f-sky { fill: var(--sky); }
+.doodle .f-mint { fill: var(--mint); }
+
+/* Capa que cubre toda la foto, por encima de otro contenido.
+   Doble clase: le gana al ancho que la Polaroid le da a sus SVG. */
+.doodle.doodle-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}

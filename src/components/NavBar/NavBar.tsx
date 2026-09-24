@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import { NavLink } from "react-router"
+import { Link, NavLink } from "react-router"
 import { useTranslation } from "react-i18next"
 import LogoutButton from "../LogoutButton/LogoutButton"
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher"
@@ -32,11 +32,11 @@ const NavBar = () => {
 
   return (
     <nav className="navbar" ref={navRef}>
-      <span className="navbar-brand">{`${userName}'s`} outfit maker ✧</span>
+      {/* La marca vuelve a la landing, donde está la guía de uso */}
+      <Link to="/" className="navbar-brand">{`${userName}'s`} outfit maker ✧</Link>
 
       <div className="navbar-links">
-        {/* end: sin esto "/" queda activo en todas las rutas */}
-        <NavLink to="/" end className={linkClass}>{t("nav.wardrobe")}</NavLink>
+        <NavLink to="/garments" className={linkClass}>{t("nav.wardrobe")}</NavLink>
         <NavLink to="/outfits" className={linkClass}>{t("nav.outfits")}</NavLink>
         <NavLink to="/categories" className={linkClass}>{t("nav.categories")}</NavLink>
         <NavLink to="/create-outfit" className={linkClass}>{t("nav.createOutfit")}</NavLink>
