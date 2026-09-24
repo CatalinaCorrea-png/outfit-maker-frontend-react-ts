@@ -3,6 +3,8 @@
     "emailRequired": "Enter your email",
     "emailInvalid": "That email doesn't look valid",
     "passwordRequired": "Enter your password",
+    "passwordTooShort": "Password must be at least {{min}} characters",
+    "passwordMismatch": "Passwords don't match",
     "nameRequired": "Enter your name",
     "categoryRequired": "Select a category",
     "primaryColorRequired": "Select a primary color",
@@ -26,6 +28,7 @@
     "USER_EMAIL_ALREADY_EXISTS": "That email is already registered.",
     "USER_NOT_FOUND": "We couldn't find a user with that email.",
     "TOKEN_EXPIRED": "Your session expired.",
-    "REQUEST_MALFORMED": "The data you sent isn't valid."
+    "REQUEST_MALFORMED": "The data you sent isn't valid.",
+    "VALIDATION_ERROR": "Some fields are invalid. Please check the form."
   }
 }

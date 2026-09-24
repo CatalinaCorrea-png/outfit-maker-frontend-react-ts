@@ -5,6 +5,8 @@ import './garmentFilters.css'
 import ChipButton from '../ChipButton/ChipButton'
 import { useTranslation } from 'react-i18next'
 import InputField from '../InputField/InputField'
+// Usa .field / .field-label con sus propios controles (selects, puntitos)
+import '../FormField/formField.css'
 import { Pattern } from '../../domain/types/Pattern'
 import { Season } from '../../domain/types/Season'
 

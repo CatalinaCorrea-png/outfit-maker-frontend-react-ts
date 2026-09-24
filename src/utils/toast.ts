@@ -10,6 +10,7 @@ const API_ERROR_CODES = [
   "USER_NOT_FOUND",
   "TOKEN_EXPIRED",
   "REQUEST_MALFORMED",
+  "VALIDATION_ERROR",
 ] as const
 
 type ApiErrorCode = (typeof API_ERROR_CODES)[number]

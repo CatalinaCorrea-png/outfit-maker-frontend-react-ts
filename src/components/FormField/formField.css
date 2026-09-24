@@ -1,0 +1,55 @@
+/* Campos de formulario: compartidos por login, registro, filtros y los
+   formularios de alta. Si un componente usa .field / .field-label sin usar
+   FormField, tiene que importar este archivo. */
+
+/* ── Formulario ─────────────────────────────────────────────── */
+
+/* Campos apilados con separación pareja */
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+/* Fila de botones al final del formulario */
+.form-actions {
+  margin-top: 0.35rem;
+}
+
+/* ── Campo ──────────────────────────────────────────────────── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  font-family: var(--font-hand);
+  font-size: 0.78rem;
+  color: var(--ink);
+}
+
+/* Viñeta tipo lapicera al lado de cada etiqueta */
+.field-label::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background-color: var(--lilac);
+}
+
+/* Las viñetas van rotando de color campo a campo */
+.field:nth-of-type(4n + 2) .field-label::before { background-color: var(--sky); }
+.field:nth-of-type(4n + 3) .field-label::before { background-color: var(--pink-mid); }
+.field:nth-of-type(4n + 4) .field-label::before { background-color: var(--mint); }
+
+/* El .field ya aporta separación con su gap */
+.field .error {
+  margin-top: 0.15rem;
+}

@@ -1,0 +1,99 @@
+/* ═══ Pantallas de acceso · la hoja de cuaderno centrada en el fondo y2k ═══ */
+
+.auth-screen {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  /* Sin esto las filas se estiran a media pantalla cada una.
+     align-content las empaqueta a su altura real y centra el grupo. */
+  align-content: center;
+  gap: 1.6rem;
+  position: relative;
+  padding: 4.2rem 1.4rem 2.5rem;
+}
+
+/* Marca a la izquierda (vuelve a la landing) e idioma a la derecha */
+.auth-brand {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.4rem;
+  z-index: 2;
+}
+
+.auth-lang {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  z-index: 2;
+}
+
+/* ── Encabezado ─────────────────────────────────────────────── */
+
+.auth-header {
+  margin-bottom: 1.6rem;
+}
+
+.auth-title {
+  margin: 0;
+  font-size: clamp(1.9rem, 8vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--pink);
+  text-shadow: 2px 2px 0 var(--ink);
+}
+
+.auth-title em {
+  display: block;
+  font-style: normal;
+  color: var(--lilac);
+  text-shadow: 2px 2px 0 var(--ink);
+}
+
+.auth-subtitle {
+  margin: 0.55rem 0 0;
+  font-family: var(--font-hand);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+/* ── Salto entre login y registro ───────────────────────────── */
+
+.auth-switch {
+  margin: 1.4rem 0 0;
+  font-size: 0.88rem;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.auth-switch-link {
+  font-weight: 800;
+  color: var(--pink-deep);
+  text-decoration: underline wavy var(--pink-mid);
+  text-underline-offset: 4px;
+}
+
+.auth-switch-link:hover {
+  color: var(--pink);
+}
+
+/* ── Pie ────────────────────────────────────────────────────── */
+
+.auth-footer {
+  margin: 1.2rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 2px dashed var(--lilac);
+  font-family: var(--font-hand);
+  font-size: 0.7rem;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.auth-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.6rem;
+}

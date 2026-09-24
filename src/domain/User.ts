@@ -1,6 +1,9 @@
 import { ValidationMessage } from "../components/ValidationField/ValidationMessage"
 import type { ValidationKey, ValidationParams } from "../components/ValidationField/ValidationMessage"
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const PASSWORD_MIN_LENGTH = 8
+
 export class User {
 	errors: ValidationMessage[] = []
 
@@ -20,20 +23,40 @@ export class User {
     this.errors.push(new ValidationMessage(field, message, params))
   }
     
+  private validateEmail() {
+    if (!this.email) {
+      this.addError("email", "validation.emailRequired")
+    } else if (!EMAIL_REGEX.test(this.email)) {
+      this.addError("email", "validation.emailInvalid")
+    }
+  }
+
   validateLogin() {
     this.errors = []
-
-    if (!this.email?.trim()) {
-      this.addError("email", "validation.emailRequired")
-    } else {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-      if (!emailRegex.test(this.email)) {
-        this.addError("email", "validation.emailInvalid")
-      }
+    this.validateEmail()
+    if (!this.password) {
+      this.addError("password", "validation.passwordRequired")
     }
+    return this.errors
+  }
+
+  validateRegister(confirmPassword: string) {
+    this.errors = []
+
+    if (!this.displayName) {
+      this.addError("name", "validation.nameRequired")
+    }
+
+    this.validateEmail()
 
     if (!this.password) {
       this.addError("password", "validation.passwordRequired")
+    } else if (this.password.length < PASSWORD_MIN_LENGTH) {
+      this.addError("password", "validation.passwordTooShort", { min: PASSWORD_MIN_LENGTH })
+    }
+
+    if (this.password && confirmPassword !== this.password) {
+      this.addError("confirmPassword", "validation.passwordMismatch")
     }
 
     return this.errors

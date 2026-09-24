@@ -4,6 +4,8 @@ export type ValidationKey =
   | "validation.emailInvalid"
   | "validation.passwordRequired"
   | "validation.nameRequired"
+  | "validation.passwordTooShort"
+  | "validation.passwordMismatch"
   | "validation.categoryRequired"
   | "validation.primaryColorRequired"
   | "validation.primaryColorInvalid"

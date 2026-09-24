@@ -3,6 +3,8 @@
     "emailRequired": "Debe ingresar un email",
     "emailInvalid": "El formato del email no es válido",
     "passwordRequired": "Debe ingresar una contraseña",
+    "passwordTooShort": "La contraseña debe tener al menos {{min}} caracteres",
+    "passwordMismatch": "Las contraseñas no coinciden",
     "nameRequired": "Debe ingresar un nombre",
     "categoryRequired": "Debe seleccionar una categoría",
     "primaryColorRequired": "Debe seleccionar un color principal",
@@ -26,6 +28,7 @@
     "USER_EMAIL_ALREADY_EXISTS": "Ese email ya está registrado.",
     "USER_NOT_FOUND": "No encontramos un usuario con ese email.",
     "TOKEN_EXPIRED": "Tu sesión expiró.",
-    "REQUEST_MALFORMED": "Los datos enviados no son válidos."
+    "REQUEST_MALFORMED": "Los datos enviados no son válidos.",
+    "VALIDATION_ERROR": "Algunos datos no son válidos. Revisá el formulario."
   }
 }
