@@ -40,7 +40,6 @@ const NavBar = () => {
         <NavLink to="/outfits" className={linkClass}>{t("nav.outfits")}</NavLink>
         <NavLink to="/categories" className={linkClass}>{t("nav.categories")}</NavLink>
         <NavLink to="/create-outfit" className={linkClass}>{t("nav.createOutfit")}</NavLink>
-        <NavLink to="/add-garment" className={linkClass}>{t("nav.addGarment")}</NavLink>
       </div>
 
       <div className="navbar-tools">

@@ -79,7 +79,6 @@
 .navbar-link.is-active:nth-child(2) { background-color: var(--lilac-soft); }
 .navbar-link.is-active:nth-child(3) { background-color: var(--mint); }
 .navbar-link.is-active:nth-child(4) { background-color: var(--sky); }
-.navbar-link.is-active:nth-child(5) { background-color: var(--butter); }
 
 .navbar-link.is-active:hover {
   transform: rotate(-1.5deg) translate(-1px, -1px);

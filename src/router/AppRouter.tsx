@@ -1,8 +1,8 @@
 import { Navigate, Route, Routes } from "react-router"
 import PrivateLayer from './PrivateLayer'
-import Home from '../pages/Home'
-import Login from '../pages/Login'
-import Garments from '../pages/Garments'
+import Home from '../pages/Home/Home'
+import Login from '../pages/Login/Login'
+import Garments from '../pages/Garments/Garments'
 import { useAuth } from "../context/AuthContext"
 
 const AppRouter = () => {

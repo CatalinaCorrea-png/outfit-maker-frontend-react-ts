@@ -1,14 +1,14 @@
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
-import type { Garment } from "../domain/Garment"
-import ChipButton from "../components/ChipButton/ChipButton"
-import GarmentCard from "../components/GarmentCard/GarmentCard"
-import { garmentService } from "../services/garmentService"
-import { useOnInit } from "../hooks/useOnInit"
-import { showToast } from "../utils/toast"
+import type { Garment } from "../../domain/Garment"
+import ChipButton from "../../components/ChipButton/ChipButton"
+import GarmentCard from "../../components/GarmentCard/GarmentCard"
+import { garmentService } from "../../services/garmentService"
+import { useOnInit } from "../../hooks/useOnInit"
+import { showToast } from "../../utils/toast"
 import "./garments.css"
-import type { GarmentFilters } from "../dto/GarmentDTO"
-import Filters, { type SortOption } from "../components/GarmentFilters/GarmentFilters"
+import type { GarmentFilters } from "../../dto/GarmentDTO"
+import Filters, { type SortOption } from "../../components/GarmentFilters/GarmentFilters"
 
 const initialFilters: GarmentFilters = {
   category: null,

@@ -1,17 +1,17 @@
 import { Link } from "react-router"
 import { useTranslation } from "react-i18next"
-import { useAuth } from "../context/AuthContext"
-import LanguageSwitcher from "../components/LanguageSwitcher/LanguageSwitcher"
-import BrandLink from "../components/BrandLink/BrandLink"
-import GitHubLink from "../components/GitHubLink/GitHubLink"
-import Polaroid, { type PhotoBackground, type TapeColor } from "../components/Polaroid/Polaroid"
+import { useAuth } from "../../context/AuthContext"
+import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher"
+import BrandLink from "../../components/BrandLink/BrandLink"
+import GitHubLink from "../../components/GitHubLink/GitHubLink"
+import Polaroid, { type PhotoBackground, type TapeColor } from "../../components/Polaroid/Polaroid"
 import {
   DoodleAddGarment,
   DoodleHanger,
   DoodleLogin,
   DoodleOutfit,
   DoodleSparkles,
-} from "../components/Doodles/Doodles"
+} from "../../components/Doodles/Doodles"
 import "./home.css"
 
 type StepKey = "login" | "garments" | "outfits" | "ai"
