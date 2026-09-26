@@ -1,44 +1,52 @@
 # 👗 Outfit Maker — Frontend
 
-SPA de **Outfit Maker**, un armario virtual para cargar tus prendas y combinarlas en outfits.
-Consume la API del [backend en Kotlin + Spring Boot](https://github.com/CatalinaCorrea-png/outfit-maker-backend-kotlin).
+SPA for **Outfit Maker**, a virtual wardrobe where you add your clothes and combine them into outfits.
+It consumes the API from the [Java 21 + Spring Boot 4 backend](https://github.com/CatalinaCorrea-png/outfit-maker-backend-java).
 
-![Estado](https://img.shields.io/badge/estado-en_desarrollo-F59E0B?style=flat-square)
+![Status](https://img.shields.io/badge/status-in_progress-F59E0B?style=flat-square)
 ![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind_4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![i18next](https://img.shields.io/badge/i18next-26A69A?style=flat-square&logo=i18next&logoColor=white)
 
-## Qué está hecho
+## What's done
 
-- **Login** con validación del formulario y mensajes de error en el idioma elegido.
-- **Sesión con JWT.** El *access token* vive solo en memoria y el *refresh token* en una cookie
-  `httpOnly` que maneja el backend. Los interceptores de Axios renuevan el token con un refresh
-  *single-flight*: si varias requests fallan a la vez, se hace un solo refresh y se reintentan
-  todas. Al recargar la página (F5) la sesión se recupera sin perderse, y cuando vence aparece un
-  modal con *focus trap*.
-- **Catálogo de prendas** conectado a la API, con filtros por categoría, nombre, marca, estampado,
-  formalidad, temporada y activas/archivadas, y orden ascendente o descendente.
-- **Español e inglés** con i18next:
-  - textos separados por módulo (`auth`, `common`, `errors`, `garments`);
-  - **claves tipadas**: TypeScript marca un error si se usa una traducción que no existe;
-  - el idioma se detecta del navegador, se puede cambiar desde el login o el navbar y queda
-    guardado.
-- **Errores del backend traducidos por código.** La API manda un código fijo
-  (`AUTH_INVALID_CREDENTIALS`, `TOKEN_EXPIRED`…) y el frontend lo convierte en un mensaje del
-  idioma activo.
-- **Accesibilidad:** atributos ARIA en los controles (estado de botones, paneles desplegables,
-  indicador de carga) y *focus trap* en el modal de sesión vencida.
+- **Public landing page** with a quick four-step guide (sign in, add clothes, build outfits, ask
+  the AI for one), illustrated with taped polaroids and custom SVG drawings.
+- **Sign up** with form validation: required fields, email format, a password of at least 8
+  characters and a confirmation that has to match. Errors show up under each field.
+- **Automatic login after signing up:** once the account is created, you're logged in and taken
+  to your wardrobe without entering your details again.
+- **Login** with form validation and error messages in the selected language. On both login and
+  sign up, the button is disabled while the request is in flight, to prevent double submits.
+- **JWT session.** The *access token* lives only in memory and the *refresh token* in an
+  `httpOnly` cookie managed by the backend. Axios interceptors renew the token with a
+  *single-flight* refresh: if several requests fail at once, a single refresh runs and all of
+  them are retried. Reloading the page (F5) restores the session, and when it expires a modal with
+  a *focus trap* appears.
+- **Garment catalog** connected to the API, with filters by category, name, brand, pattern,
+  formality, season and active/archived, sorted ascending or descending.
+- **Spanish and English** with i18next:
+  - texts split by module (`auth`, `common`, `errors`, `garments`, `home`);
+  - **typed keys**: TypeScript flags an error if a translation that doesn't exist is used;
+  - the language is detected from the browser, can be changed from the landing, login, sign up or
+    navbar, and is remembered.
+- **Backend errors translated by code.** The API sends a stable code
+  (`AUTH_INVALID_CREDENTIALS`, `TOKEN_EXPIRED`…) and the frontend turns it into a message in the
+  active language.
+- **Accessibility:** ARIA attributes on controls (button state, collapsible panels, loading
+  indicator) and a *focus trap* in the session-expired modal.
 
-## Todavía no
+## Not yet
 
-- Registro, vista de outfits y alta/edición de prendas.
+- Outfits view and adding/editing garments.
+- AI outfit generator.
 - Tests.
 
-## Cómo correrlo
+## Running it
 
-Necesita el [backend](https://github.com/CatalinaCorrea-png/outfit-maker-backend-kotlin) corriendo.
+Requires the [backend](https://github.com/CatalinaCorrea-png/outfit-maker-backend-java) to be running.
 
 ```bash
 pnpm install
