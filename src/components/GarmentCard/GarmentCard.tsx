@@ -12,8 +12,14 @@ const GarmentCard = ({ garment }: { garment: Garment }) => {
     <article className={`garment-card ${garment.active ? "" : "is-archived"}`}>
 
       <figure className="garment-card-photo">
-        {garment.imageUrl ? (
-          <img className="garment-card-img" src={garment.imageUrl} alt={garment.name} loading="lazy" />
+        {garment.frontImageUrl ? (
+          <>
+            <img className="garment-card-img" src={garment.frontImageUrl} alt={garment.name} loading="lazy" />
+            {/* La espalda aparece en hover. Decorativa: el nombre ya lo anuncia la de adelante */}
+            {garment.backImageUrl && (
+              <img className="garment-card-img is-back" src={garment.backImageUrl} alt="" aria-hidden="true" loading="lazy" />
+            )}
+          </>
         ) : (
           <div className="garment-card-photo-empty" aria-hidden="true">👗</div>
         )}

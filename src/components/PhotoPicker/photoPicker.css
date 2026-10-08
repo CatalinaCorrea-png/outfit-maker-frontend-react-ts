@@ -1,0 +1,31 @@
+/* Elegir una cara de la prenda: la polaroid hace de preview.
+   La foto va en el 4:5 de la card (la polaroid por defecto es apaisada). */
+.photo-picker {
+  gap: 1rem;
+}
+.photo-picker-polaroid .polaroid-photo {
+  aspect-ratio: 4 / 5;
+}
+
+.photo-picker-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-picker-empty {
+  padding: 0 0.8rem;
+  font-family: var(--font-hand);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.photo-picker-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}

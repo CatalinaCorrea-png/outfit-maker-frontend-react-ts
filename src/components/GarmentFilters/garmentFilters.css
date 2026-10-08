@@ -156,34 +156,6 @@
   cursor: pointer;
 }
 
-/* ── Formalidad: los puntitos de la card, clickeables ────────────── */
-
-.filters-formality {
-  display: flex;
-  gap: 6px;
-  height: 32px;
-  align-items: center;
-}
-
-.filters-dot {
-  width: 17px;
-  height: 17px;
-  padding: 0;
-  border: var(--stroke-w) solid var(--ink);
-  border-radius: 50%;
-  background-color: var(--paper);
-  cursor: pointer;
-  transition: transform 90ms ease, background-color 90ms ease;
-}
-
-.filters-dot:hover {
-  transform: scale(1.15);
-}
-
-.filters-dot.is-on {
-  background-color: var(--butter);
-}
-
 /* ── Archivadas ──────────────────────────────────────────────────── */
 
 .filters-check {

@@ -15,7 +15,10 @@
     "patternInvalid": "Invalid pattern",
     "fitInvalid": "Invalid fit",
     "seasonInvalid": "Invalid season",
-    "tooLong": "{{max}} characters max"
+    "tooLong": "{{max}} characters max",
+    "frontPhotoRequired": "The front photo is missing",
+    "photoUnreadable": "We couldn't read that photo. Try a JPG, PNG or WebP",
+    "nameTaken": "You already have a garment with that name"
   },
   "http": {
     "server": "Something went wrong on our side. Try again later.",
@@ -29,6 +32,19 @@
     "USER_NOT_FOUND": "We couldn't find a user with that email.",
     "TOKEN_EXPIRED": "Your session expired.",
     "REQUEST_MALFORMED": "The data you sent isn't valid.",
-    "VALIDATION_ERROR": "Some fields are invalid. Please check the form."
+    "VALIDATION_ERROR": "Some fields are invalid. Please check the form.",
+    "CATEGORY_NOT_FOUND": "That category doesn't exist.",
+    "GARMENT_ALREADY_EXISTS": "You already have a garment with that name.",
+    "GARMENT_NAME_REQUIRED": "The garment needs a name.",
+    "GARMENT_TEXT_TOO_LONG": "One of the garment's texts is too long.",
+    "INVALID_PRIMARY_COLOR": "The main color isn't valid.",
+    "INVALID_SECONDARY_COLOR": "The secondary color isn't valid.",
+    "INVALID_FORMALITY_NUMBER": "Formality must be between 1 and 5.",
+    "AUTH_FAILED": "We couldn't verify your session. Please log in again.",
+    "TOKEN_INVALID": "Your session isn't valid. Please log in again.",
+    "PHOTO_INVALID_TYPE": "The photo must be a JPG, PNG or WebP.",
+    "PHOTO_EMPTY": "The photo is empty.",
+    "PHOTO_TOO_LARGE": "The photo is too large.",
+    "PHOTO_REQUIRED": "The front photo is missing."
   }
 }

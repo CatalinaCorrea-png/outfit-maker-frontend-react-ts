@@ -1,0 +1,194 @@
+/* ═══ Alta de prenda · la hoja de cuaderno ancha, con las polaroids pegadas al margen ═══
+   Reusa NotebookCard (la hoja), las polaroids del PhotoPicker y los campos de formField.css. */
+
+.add-garment {
+  display: flex;
+  justify-content: center;
+  padding: 32px 20px 64px;
+}
+
+/* La NotebookCard viene angosta (es la de login): acá necesita lugar para dos columnas */
+.add-garment-card {
+  max-width: 60rem;
+  transform: rotate(-0.3deg);
+}
+
+/* ── Encabezado ─────────────────────────────────────────────── */
+
+.add-garment-header {
+  margin-bottom: 1.6rem;
+}
+
+.add-garment-title {
+  margin: 0;
+  font-size: clamp(1.7rem, 6vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--pink);
+  text-shadow: 2px 2px 0 var(--ink);
+}
+
+.add-garment-subtitle {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-hand);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+/* ── Fotos | datos ──────────────────────────────────────────── */
+
+.add-garment-form {
+  display: grid;
+  grid-template-columns: minmax(12rem, 16rem) 1fr;
+  gap: 2rem 2.4rem;
+  align-items: start;
+}
+
+.add-garment-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* Filas de campos cortos lado a lado */
+.add-garment-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.add-garment-row.is-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* ── Colores ────────────────────────────────────────────────── */
+
+.add-garment-color {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+/* El picker nativo, vestido de swatch: el mismo círculo de tinta que la card */
+.add-garment-swatch {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  padding: 0;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 50%;
+  background-color: var(--paper);
+  box-shadow: var(--pop-sm);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.add-garment-swatch::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.add-garment-swatch::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+.add-garment-swatch::-moz-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+.add-garment-hex {
+  font-family: var(--font-hand);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-transform: lowercase;
+}
+
+/* "Tiene un color secundario": hace de etiqueta del campo */
+.add-garment-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 1.3rem;
+  font-family: var(--font-hand);
+  font-size: 0.78rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.add-garment-check input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--pink);
+  cursor: pointer;
+}
+
+/* ── Formalidad ─────────────────────────────────────────────── */
+
+.add-garment-formality {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Un poco más grandes que en el filtro: acá es un campo principal */
+.add-garment-formality .formality-dot {
+  width: 22px;
+  height: 22px;
+}
+
+.add-garment-formality-name {
+  font-family: var(--font-hand);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+/* ── Cuidados ───────────────────────────────────────────────── */
+
+/* .input fija el alto en 46px: el textarea crece con su contenido */
+.add-garment-textarea {
+  height: auto;
+  min-height: 5.5rem;
+  padding: 0.7rem 0.85rem;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+/* ── Guardar ────────────────────────────────────────────────── */
+
+.add-garment-actions {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 22rem;
+  justify-self: center;
+}
+
+/* ── Angosto ────────────────────────────────────────────────── */
+
+@media (max-width: 760px) {
+  .add-garment {
+    padding: 20px 12px 48px;
+  }
+
+  .add-garment-card {
+    transform: none;
+  }
+
+  .add-garment-form {
+    grid-template-columns: 1fr;
+  }
+
+  /* Las dos polaroids lado a lado, arriba de los campos */
+  .add-garment-photos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .add-garment-row,
+  .add-garment-row.is-three {
+    grid-template-columns: 1fr;
+  }
+}

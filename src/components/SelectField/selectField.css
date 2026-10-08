@@ -1,0 +1,11 @@
+/* El select hereda todo de .input (trazo, sombra, foco lila);
+   acá solo lo que cambia por ser un select. */
+
+.select {
+  cursor: pointer;
+}
+
+.select:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

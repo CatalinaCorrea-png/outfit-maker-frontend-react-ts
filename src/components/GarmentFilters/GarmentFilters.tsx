@@ -3,6 +3,7 @@ import type { ParseKeys } from 'i18next'
 import type { GarmentFilters } from '../../dto/GarmentDTO'
 import './garmentFilters.css'
 import ChipButton from '../ChipButton/ChipButton'
+import FormalityDots from '../FormalityDots/FormalityDots'
 import { useTranslation } from 'react-i18next'
 import InputField from '../InputField/InputField'
 // Usa .field / .field-label con sus propios controles (selects, puntitos)
@@ -25,9 +26,6 @@ type GarmentFiltersProps = {
     // del closure todavía tiene el valor viejo cuando disparamos la búsqueda.
     sendFilters: (filtersToSend: GarmentFilters) => void
 }
-
-// as const para que el nivel sea 1|2|3|4|5 y tipe contra las claves formality.*
-const FORMALITY_LEVELS = [1, 2, 3, 4, 5] as const
 
 // Los que cuentan para el globito del botón: el orden y la paginación no son filtros
 const FILTER_KEYS = ["category", "name", "brand", "pattern", "season", "formality", "active"] as const
@@ -56,11 +54,6 @@ const Filters = ({ initialFilters, initialSortOptions, filters, setFilters, send
         [key]: value,
         }))
         return { ...filters, [key]: value } // devuelvo los filtros mas actualizados
-    }
-
-    // Volver a clickear el nivel que ya estaba seleccionado limpia el filtro
-    const toggleFormality = (level: number) => {
-        updateFilter("formality", filters.formality === level ? null : level)
     }
 
     //* ==== SORTING ====
@@ -210,19 +203,11 @@ const Filters = ({ initialFilters, initialSortOptions, filters, setFilters, send
 
                     <div className="field">
                         <span className="field-label">{t("filters.formality")}</span>
-                        <div className="filters-formality" role="group" aria-label={t("filters.formality")}>
-                            {FORMALITY_LEVELS.map((level) => (
-                                <button
-                                    key={level}
-                                    type="button"
-                                    className={`filters-dot ${filters.formality === level ? "is-on" : ""}`}
-                                    onClick={() => toggleFormality(level)}
-                                    aria-pressed={filters.formality === level}
-                                    aria-label={t(`formality.${level}`)}
-                                    title={t(`formality.${level}`)}
-                                />
-                            ))}
-                        </div>
+                        <FormalityDots
+                            value={filters.formality}
+                            onChange={(level) => updateFilter("formality", level)}
+                            label={t("filters.formality")}
+                        />
                     </div>
 
                     <div className="field filters-check">

@@ -45,5 +45,43 @@
     "3": "smart casual",
     "4": "semi formal",
     "5": "formal"
+  },
+  "form": {
+    "title": "New garment",
+    "subtitle": "add it to your closet ✧ with front and back photos",
+    "optional": "(optional)",
+    "photos": {
+      "frontLabel": "Front photo",
+      "backLabel": "Back photo",
+      "frontCaption": "front",
+      "backCaption": "back",
+      "choose": "Choose photo",
+      "change": "Change",
+      "remove": "Remove",
+      "empty": "no photo yet ♡"
+    },
+    "name": "Name",
+    "namePlaceholder": "e.g. striped tee",
+    "category": "Category",
+    "categoryPlaceholder": "Choose a category",
+    "categoriesError": "We couldn't load the categories",
+    "brand": "Brand",
+    "brandPlaceholder": "e.g. Zara",
+    "material": "Material",
+    "materialPlaceholder": "e.g. cotton",
+    "primaryColor": "Main color",
+    "secondaryColor": "Secondary color",
+    "hasSecondaryColor": "It has a secondary color",
+    "pattern": "Pattern",
+    "fit": "Fit",
+    "season": "Season",
+    "formality": "Formality",
+    "formalityNone": "pick a level",
+    "careNotes": "Care",
+    "careNotesPlaceholder": "e.g. wash in cold water",
+    "submit": "Save garment",
+    "submitting": "Saving…",
+    "success": "Garment saved! ✧ You can add another one.",
+    "error": "We couldn't save the garment"
   }
 }

@@ -1,0 +1,28 @@
+/* Formalidad: los puntitos de la card, clickeables.
+   Mismo trazo que los de la card; el elegido se pinta en manteca. */
+
+.formality-dots {
+  display: flex;
+  gap: 6px;
+  min-height: 32px;
+  align-items: center;
+}
+
+.formality-dot {
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 50%;
+  background-color: var(--paper);
+  cursor: pointer;
+  transition: transform 90ms ease, background-color 90ms ease;
+}
+
+.formality-dot:hover {
+  transform: scale(1.15);
+}
+
+.formality-dot.is-on {
+  background-color: var(--butter);
+}

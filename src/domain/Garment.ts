@@ -1,6 +1,6 @@
 import type { ValidationKey, ValidationParams } from "../components/ValidationField/ValidationMessage";
 import { ValidationMessage } from "../components/ValidationField/ValidationMessage";
-import type { GarmentJSON } from "../dto/GarmentDTO";
+import type { GarmentCreateJSON, GarmentJSON } from "../dto/GarmentDTO";
 import { Fit } from "./types/Fit";
 import { Pattern } from "./types/Pattern";
 import { Season } from "./types/Season";
@@ -33,7 +33,8 @@ export class Garment {
     // Soft delete: false = prenda donada/vendida, pero los outfits históricos quedan
     public active: boolean = true
     public createdAt: Date = new Date()
-    public imageUrl: string | null = null
+    public frontImageUrl: string | null = null
+    public backImageUrl: string | null = null
 
     constructor(
         id: string = "",
@@ -50,7 +51,8 @@ export class Garment {
         careNotes: string | null = null,
         active: boolean = true,
         createdAt: Date = new Date(),
-        imageUrl: string | null = null
+        frontImageUrl: string | null = null,
+        backImageUrl: string | null = null
     ) {
         this.id = id
         this.category = category
@@ -66,7 +68,8 @@ export class Garment {
         this.careNotes = careNotes
         this.active = active
         this.createdAt = createdAt
-        this.imageUrl = imageUrl
+        this.frontImageUrl = frontImageUrl
+        this.backImageUrl = backImageUrl
     }
 
     static fromJSON(json: GarmentJSON): Garment {
@@ -75,8 +78,26 @@ export class Garment {
           json.primaryColor, json.secondaryColor ?? "",
           json.pattern, json.material, json.formality,
           json.fit, json.season, json.careNotes, json.active,
-          new Date(json.createdAt), json.imageUrl
+          new Date(json.createdAt), json.frontImageUrl, json.backImageUrl
       )
+    }
+
+    // El camino inverso de fromJSON: los datos que espera POST /garments/create.
+    // Las fotos van aparte, como archivos del mismo request (ver garmentService).
+    toCreateJSON(): GarmentCreateJSON {
+        return {
+            category: this.category ?? "",
+            name: this.name,
+            brand: this.brand,
+            primaryColor: this.primaryColor,
+            secondaryColor: this.secondaryColor,
+            pattern: this.pattern,
+            material: this.material,
+            formality: this.formality,
+            fit: this.fit,
+            season: this.season,
+            careNotes: this.careNotes,
+        }
     }
 
     addError(field: string, message: ValidationKey, params?: ValidationParams) {

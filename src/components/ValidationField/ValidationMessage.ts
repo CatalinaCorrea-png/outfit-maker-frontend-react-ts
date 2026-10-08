@@ -15,6 +15,10 @@ export type ValidationKey =
   | "validation.patternInvalid"
   | "validation.fitInvalid"
   | "validation.seasonInvalid"
+  // Formulario de alta de prenda
+  | "validation.frontPhotoRequired"
+  | "validation.photoUnreadable"
+  | "validation.nameTaken"
   // Genérica: sirve para cualquier campo de texto, recibe {{max}}
   | "validation.tooLong"
 

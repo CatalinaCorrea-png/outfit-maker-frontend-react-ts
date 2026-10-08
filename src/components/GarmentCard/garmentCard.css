@@ -38,12 +38,25 @@
   );
 }
 
-/* Ocupa toda la figura: el grid la centraría si no le damos medida */
+/* Ocupa toda la figura: el grid la centraría si no le damos medida.
+   Adelante y atrás comparten la misma celda, así se superponen sin position absolute. */
 .garment-card-img {
+  grid-area: 1 / 1;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* La espalda espera tapada y aparece en hover. Sin @media (hover: hover) a propósito:
+   en celular la emulación de hover (tap, dedo apretado, scroll) también la muestra. */
+.garment-card-img.is-back {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.garment-card-photo:hover .garment-card-img.is-back {
+  opacity: 1;
 }
 
 .garment-card-photo-empty {

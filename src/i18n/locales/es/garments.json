@@ -45,5 +45,43 @@
     "3": "smart casual",
     "4": "semi formal",
     "5": "formal"
+  },
+  "form": {
+    "title": "Nueva prenda",
+    "subtitle": "sumala al placard ✧ con fotos de adelante y de atrás",
+    "optional": "(opcional)",
+    "photos": {
+      "frontLabel": "Foto de adelante",
+      "backLabel": "Foto de atrás",
+      "frontCaption": "adelante",
+      "backCaption": "atrás",
+      "choose": "Elegir foto",
+      "change": "Cambiar",
+      "remove": "Quitar",
+      "empty": "todavía no hay foto ♡"
+    },
+    "name": "Nombre",
+    "namePlaceholder": "ej: remera rayada",
+    "category": "Categoría",
+    "categoryPlaceholder": "Elegí una categoría",
+    "categoriesError": "No pudimos cargar las categorías",
+    "brand": "Marca",
+    "brandPlaceholder": "ej: Zara",
+    "material": "Material",
+    "materialPlaceholder": "ej: algodón",
+    "primaryColor": "Color principal",
+    "secondaryColor": "Color secundario",
+    "hasSecondaryColor": "Tiene un color secundario",
+    "pattern": "Estampado",
+    "fit": "Calce",
+    "season": "Temporada",
+    "formality": "Formalidad",
+    "formalityNone": "elegí un nivel",
+    "careNotes": "Cuidados",
+    "careNotesPlaceholder": "ej: lavar con agua fría",
+    "submit": "Guardar prenda",
+    "submitting": "Guardando…",
+    "success": "¡Prenda guardada! ✧ Ya podés cargar otra.",
+    "error": "No pudimos guardar la prenda"
   }
 }

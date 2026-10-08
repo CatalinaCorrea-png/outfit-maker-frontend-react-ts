@@ -15,7 +15,10 @@
     "patternInvalid": "El patrón no es válido",
     "fitInvalid": "La talla no es válida",
     "seasonInvalid": "La temporada no es válida",
-    "tooLong": "Máximo {{max}} caracteres"
+    "tooLong": "Máximo {{max}} caracteres",
+    "frontPhotoRequired": "Falta la foto de adelante",
+    "photoUnreadable": "No pudimos leer esa foto. Probá con JPG, PNG o WebP",
+    "nameTaken": "Ya tenés una prenda con ese nombre"
   },
   "http": {
     "server": "Ocurrió un error, consultá al administrador.",
@@ -29,6 +32,19 @@
     "USER_NOT_FOUND": "No encontramos un usuario con ese email.",
     "TOKEN_EXPIRED": "Tu sesión expiró.",
     "REQUEST_MALFORMED": "Los datos enviados no son válidos.",
-    "VALIDATION_ERROR": "Algunos datos no son válidos. Revisá el formulario."
+    "VALIDATION_ERROR": "Algunos datos no son válidos. Revisá el formulario.",
+    "CATEGORY_NOT_FOUND": "Esa categoría no existe.",
+    "GARMENT_ALREADY_EXISTS": "Ya tenés una prenda con ese nombre.",
+    "GARMENT_NAME_REQUIRED": "La prenda tiene que tener un nombre.",
+    "GARMENT_TEXT_TOO_LONG": "Algún texto de la prenda es demasiado largo.",
+    "INVALID_PRIMARY_COLOR": "El color principal no es válido.",
+    "INVALID_SECONDARY_COLOR": "El color secundario no es válido.",
+    "INVALID_FORMALITY_NUMBER": "La formalidad tiene que estar entre 1 y 5.",
+    "AUTH_FAILED": "No pudimos verificar tu sesión. Volvé a iniciar sesión.",
+    "TOKEN_INVALID": "Tu sesión no es válida. Volvé a iniciar sesión.",
+    "PHOTO_INVALID_TYPE": "La foto tiene que ser JPG, PNG o WebP.",
+    "PHOTO_EMPTY": "La foto está vacía.",
+    "PHOTO_TOO_LARGE": "La foto es demasiado pesada.",
+    "PHOTO_REQUIRED": "Falta la foto de adelante."
   }
 }
