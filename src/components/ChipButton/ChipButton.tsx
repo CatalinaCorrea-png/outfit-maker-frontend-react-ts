@@ -6,8 +6,9 @@ type ChipButtonProps = {
     text: string;
     type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
     onClick?: () => void;
-    // solid = acción principal (rosa), ghost = secundaria (papel)
-    variant?: "solid" | "ghost";
+    // solid = acción principal (rosa), ghost = secundaria (papel),
+    // danger = lo que no se puede deshacer (ej: eliminar)
+    variant?: "solid" | "ghost" | "danger";
     // Si viene, se renderiza como link: así andan el ctrl+click,
     // el "abrir en pestaña nueva" y el botón de atrás del navegador.
     to?: string;

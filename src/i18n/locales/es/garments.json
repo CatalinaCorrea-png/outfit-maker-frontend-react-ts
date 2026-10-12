@@ -116,6 +116,13 @@
     "archiveSuccess": "Prenda archivada ✧ la podés desarchivar cuando quieras",
     "unarchiveSuccess": "¡Volvió al placard! ✧",
     "archiveError": "No pudimos archivar la prenda",
-    "unarchiveError": "No pudimos desarchivar la prenda"
+    "unarchiveError": "No pudimos desarchivar la prenda",
+    "delete": "Eliminar",
+    "deleteTitle": "¿Eliminar «{{name}}»?",
+    "deleteMessage": "Se borra con sus fotos y no se puede deshacer. Si solo ya no la usás, mejor archivala.",
+    "deleteConfirm": "Sí, eliminar",
+    "deleting": "Eliminando…",
+    "deleteSuccess": "Prenda eliminada ✧",
+    "deleteError": "No pudimos eliminar la prenda"
   }
 }

@@ -36,6 +36,7 @@
     "CATEGORY_NOT_FOUND": "Esa categoría no existe.",
     "GARMENT_NOT_FOUND": "No encontramos esa prenda.",
     "GARMENT_ALREADY_EXISTS": "Ya tenés una prenda con ese nombre.",
+    "GARMENT_IN_OUTFITS": "Esta prenda está en uno o más outfits: no se puede eliminar. Podés archivarla.",
     "GARMENT_NAME_REQUIRED": "La prenda tiene que tener un nombre.",
     "GARMENT_TEXT_TOO_LONG": "Algún texto de la prenda es demasiado largo.",
     "INVALID_PRIMARY_COLOR": "El color principal no es válido.",

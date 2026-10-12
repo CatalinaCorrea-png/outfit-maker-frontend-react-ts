@@ -36,6 +36,7 @@
     "CATEGORY_NOT_FOUND": "That category doesn't exist.",
     "GARMENT_NOT_FOUND": "We couldn't find that garment.",
     "GARMENT_ALREADY_EXISTS": "You already have a garment with that name.",
+    "GARMENT_IN_OUTFITS": "This garment is in one or more outfits, so it can't be deleted. You can archive it instead.",
     "GARMENT_NAME_REQUIRED": "The garment needs a name.",
     "GARMENT_TEXT_TOO_LONG": "One of the garment's texts is too long.",
     "INVALID_PRIMARY_COLOR": "The main color isn't valid.",

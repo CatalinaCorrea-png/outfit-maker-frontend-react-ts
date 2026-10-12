@@ -75,6 +75,11 @@ class GarmentService {
         return Garment.fromJSON(response.data)
     }
 
+    // Borrado definitivo. El back responde 409 GARMENT_IN_OUTFITS si está en algún outfit
+    async deleteGarment(id: string): Promise<void> {
+        await axios.delete(`${import.meta.env.VITE_API_URL}/garments/${encodeURIComponent(id)}`)
+    }
+
     // Edición atómica, igual que el alta. Las fotos que no vienen se mantienen;
     // las reemplazadas las borra el back recién después de guardar.
     async updateGarment(id: string, garment: GarmentCreateJSON, photos: GarmentPhotoChanges): Promise<Garment> {

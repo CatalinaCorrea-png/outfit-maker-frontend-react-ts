@@ -42,6 +42,11 @@
   color: var(--ink);
 }
 
+.chip-button.is-danger {
+  background-color: var(--pink-soft);
+  color: var(--pink-ink);
+}
+
 /* Esperando al server: quieto y apagado */
 .chip-button:disabled {
   opacity: 0.6;

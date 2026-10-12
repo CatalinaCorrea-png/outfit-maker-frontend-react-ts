@@ -1,7 +1,8 @@
 import { useState, type ReactNode } from "react"
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import { useTranslation } from "react-i18next"
 import ChipButton from "../../components/ChipButton/ChipButton"
+import ConfirmDialog from "../../components/ConfirmDialog/ConfirmDialog"
 import NotebookCard from "../../components/NotebookCard/NotebookCard"
 import Polaroid, { type TapeColor } from "../../components/Polaroid/Polaroid"
 import GarmentMissing from "../../components/GarmentMissing/GarmentMissing"
@@ -58,6 +59,9 @@ const GarmentDetail = () => {
   const { id = "" } = useParams()
   const { status, garment, replace } = useGarment(id)
   const [isArchiving, setIsArchiving] = useState(false)
+  const [isConfirmingDelete, setIsConfirmingDelete] = useState(false)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const navigate = useNavigate()
 
   if (status === "loading") return <Loader text={t("detail.loading")} />
   if (status !== "ready") return <GarmentMissing status={status} />
@@ -85,6 +89,23 @@ const GarmentDetail = () => {
     }
   }
 
+  // Eliminar no se puede deshacer: primero confirma. Si está en un outfit, el back
+  // no la borra (409) y el toast sugiere archivarla.
+  const deleteGarment = async () => {
+    setIsDeleting(true)
+    try {
+      await garmentService.deleteGarment(garment.id)
+      showToast.success(t("detail.deleteSuccess"))
+      // replace: "atrás" no vuelve al detalle de una prenda que ya no existe
+      navigate("/garments", { replace: true })
+    } catch (error) {
+      showToast.httpError(error, t("detail.deleteError"))
+      setIsConfirmingDelete(false)
+    } finally {
+      setIsDeleting(false)
+    }
+  }
+
   return (
     <main className="garment-detail">
       <nav className="garment-detail-actions">
@@ -96,9 +117,27 @@ const GarmentDetail = () => {
             onClick={toggleArchived}
             disabled={isArchiving}
           />
+          <ChipButton
+            text={t("detail.delete")}
+            variant="danger"
+            onClick={() => setIsConfirmingDelete(true)}
+            disabled={isDeleting}
+          />
           <ChipButton text={`✎ ${t("detail.edit")}`} to={`/garments/${encodeURIComponent(garment.id)}/edit`} />
         </div>
       </nav>
+
+      {isConfirmingDelete && (
+        <ConfirmDialog
+          title={t("detail.deleteTitle", { name: garment.name })}
+          message={t("detail.deleteMessage")}
+          confirmText={isDeleting ? t("detail.deleting") : t("detail.deleteConfirm")}
+          cancelText={t("form.cancel")}
+          busy={isDeleting}
+          onConfirm={deleteGarment}
+          onCancel={() => setIsConfirmingDelete(false)}
+        />
+      )}
 
       <div className={`garment-detail-sheet ${garment.active ? "" : "is-archived"}`}>
         <section className="garment-detail-photos">

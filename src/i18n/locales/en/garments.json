@@ -116,6 +116,13 @@
     "archiveSuccess": "Garment archived ✧ you can unarchive it anytime",
     "unarchiveSuccess": "Back in the closet! ✧",
     "archiveError": "We couldn't archive the garment",
-    "unarchiveError": "We couldn't unarchive the garment"
+    "unarchiveError": "We couldn't unarchive the garment",
+    "delete": "Delete",
+    "deleteTitle": "Delete “{{name}}”?",
+    "deleteMessage": "It's deleted with its photos and can't be undone. If you just don't wear it anymore, archive it instead.",
+    "deleteConfirm": "Yes, delete",
+    "deleting": "Deleting…",
+    "deleteSuccess": "Garment deleted ✧",
+    "deleteError": "We couldn't delete the garment"
   }
 }
