@@ -41,3 +41,11 @@
   background-color: var(--paper);
   color: var(--ink);
 }
+
+/* Esperando al server: quieto y apagado */
+.chip-button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+  transform: none;
+  filter: none;
+}

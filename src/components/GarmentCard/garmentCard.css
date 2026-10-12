@@ -2,6 +2,21 @@
    Mismo lenguaje que el resto: tinta 2px, sombra dura sin blur y esquinas
    redondeadas. La foto manda; los datos son anotaciones al pie. */
 
+/* La card como link al detalle: ocupa la celda de la grilla, sin estilo de link */
+.garment-card-link {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--r-lg);
+}
+
+.garment-card-link:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 4px;
+}
+
 .garment-card {
   display: flex;
   flex-direction: column;

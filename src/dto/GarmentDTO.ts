@@ -2,6 +2,15 @@ import type { Fit } from "../domain/types/Fit"
 import type { Pattern } from "../domain/types/Pattern"
 import type { Season } from "../domain/types/Season"
 
+// Una cara de la prenda, espejo de GarmentPhotoDTO del back.
+// thumbUrl y cutoutUrl pueden faltar: la card usa la original si no hay miniatura.
+export type GarmentPhotoJSON = {
+    url: string,
+    thumbUrl: string | null,
+    cutoutUrl: string | null,
+}
+
+// Espejo de GarmentDTO: la misma forma para el listado, el detalle y la edición
 export type GarmentJSON = {
     id: string,
     category: string, // category name
@@ -17,13 +26,13 @@ export type GarmentJSON = {
     careNotes: string | null,
     active: boolean,
     createdAt: string,
-    // Miniatura de cada cara (o la original); null si la prenda no tiene esa foto
-    frontImageUrl: string | null,
-    backImageUrl: string | null,
+    // null si la prenda no tiene esa foto
+    front: GarmentPhotoJSON | null,
+    back: GarmentPhotoJSON | null,
 }
 
 // Forma de GarmentCreateDTO del back: la parte "garment" del multipart de
-// POST /garments/create. Las fotos no van acá: viajan como archivos en el mismo request.
+// POST /garments/create y de PUT /garments/{id}. Las fotos no van acá: viajan como archivos en el mismo request.
 export type GarmentCreateJSON = {
     category: string, // category name
     name: string,

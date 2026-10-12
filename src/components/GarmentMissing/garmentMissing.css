@@ -1,0 +1,38 @@
+/* Prenda que no llegó: la misma nota punteada que el placard vacío */
+.garment-missing {
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px;
+}
+
+.garment-missing-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  max-width: 420px;
+  padding: 24px 26px;
+  border: var(--stroke-w) dashed var(--ink-soft);
+  border-radius: var(--r-lg);
+  background-color: var(--paper);
+  box-shadow: var(--pop-sm);
+  text-align: center;
+}
+
+.garment-missing-icon {
+  font-size: 2.4rem;
+}
+
+.garment-missing-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.garment-missing-text {
+  margin: 0;
+  font-family: var(--font-hand);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}

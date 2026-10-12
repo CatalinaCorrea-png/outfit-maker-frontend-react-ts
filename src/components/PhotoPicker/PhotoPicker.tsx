@@ -7,9 +7,11 @@ import type { ValidationMessage } from "../ValidationField/ValidationMessage"
 import "../FormField/formField.css"
 import "./photoPicker.css"
 
-// La foto elegida y la URL local de su preview (todavía no se subió nada)
+// La foto de una cara y la URL de su preview.
+// file = foto nueva, elegida acá (la preview es un object URL local, todavía no se subió).
+// file null = la foto que la prenda ya tiene en el server (la preview es su URL).
 export type PhotoSelection = {
-  file: File
+  file: File | null
   previewUrl: string
 }
 
@@ -45,10 +47,12 @@ const PhotoPicker = ({
   const { t } = useTranslation("garments")
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // Solo cleanup, sin setState. Arranca siempre sin foto, así que el doble montaje
-  // de StrictMode no revoca una preview en uso.
+  // Solo cleanup, sin setState. Solo se revocan las URLs que creó este componente
+  // (fotos nuevas): la de una foto del server no es un object URL. Una foto nueva
+  // siempre llega después del montaje, así que el doble montaje de StrictMode no
+  // revoca una preview en uso.
   useEffect(() => () => {
-    if (photo) URL.revokeObjectURL(photo.previewUrl)
+    if (photo?.file) URL.revokeObjectURL(photo.previewUrl)
   }, [photo])
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {

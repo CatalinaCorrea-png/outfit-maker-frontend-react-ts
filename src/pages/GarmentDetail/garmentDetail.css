@@ -1,0 +1,217 @@
+/* ═══ Detalle de prenda · las polaroids grandes al costado de la ficha en el cuaderno ═══
+   Reusa Polaroid (fotos) y NotebookCard (la ficha), como el formulario. */
+
+.garment-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 28px 20px 64px;
+}
+
+.garment-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 60rem;
+}
+
+.garment-detail-actions-end {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Fotos | ficha */
+.garment-detail-sheet {
+  display: grid;
+  grid-template-columns: minmax(14rem, 20rem) minmax(0, 1fr);
+  gap: 2rem 2.6rem;
+  align-items: start;
+  width: 100%;
+  max-width: 60rem;
+}
+
+.garment-detail-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* El 4:5 de la card (la polaroid por defecto es apaisada) */
+.garment-detail-polaroid .polaroid-photo {
+  aspect-ratio: 4 / 5;
+}
+
+.garment-detail-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.garment-detail-empty {
+  padding: 0 0.8rem;
+  font-family: var(--font-hand);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* La NotebookCard viene angosta (es la de login): acá ocupa su columna */
+.garment-detail-card {
+  max-width: none;
+  transform: rotate(0.3deg);
+}
+
+/* ── Encabezado ─────────────────────────────────────────────── */
+
+.garment-detail-header {
+  position: relative;
+  margin-bottom: 1.4rem;
+}
+
+.garment-detail-name {
+  margin: 0;
+  font-size: clamp(1.7rem, 6vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--pink);
+  text-shadow: 2px 2px 0 var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.garment-detail-brand {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-hand);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* El mismo sello que la card archivada */
+.garment-detail-stamp {
+  display: inline-block;
+  margin-top: 0.8rem;
+  padding: 3px 14px;
+  transform: rotate(-6deg);
+  border: 3px solid var(--pink-deep);
+  border-radius: var(--r-sm);
+  color: var(--pink-deep);
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.garment-detail-hint {
+  margin: 0.6rem 0 0;
+  font-family: var(--font-hand);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.garment-detail-sheet.is-archived .garment-detail-img {
+  filter: grayscale(1);
+  opacity: 0.55;
+}
+
+/* ── Ficha ──────────────────────────────────────────────────── */
+
+.garment-detail-facts {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+/* Cada dato sobre un renglón del cuaderno */
+.garment-detail-fact {
+  display: grid;
+  grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  padding: 0.55rem 0;
+  border-bottom: 1px dashed var(--rule);
+}
+
+.garment-detail-fact:last-child {
+  border-bottom: none;
+}
+
+.garment-detail-label {
+  font-family: var(--font-hand);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.garment-detail-value {
+  margin: 0;
+  font-weight: 600;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.garment-detail-colors {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.garment-detail-swatch {
+  width: 26px;
+  height: 26px;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 50%;
+  box-shadow: var(--pop-sm);
+}
+
+.garment-detail-formality {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.garment-detail-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.garment-detail-dot {
+  width: 14px;
+  height: 14px;
+  border: var(--stroke-w) solid var(--ink);
+  border-radius: 50%;
+  background-color: var(--paper);
+}
+
+.garment-detail-dot.is-on {
+  background-color: var(--butter);
+}
+
+/* ── Angosto ────────────────────────────────────────────────── */
+
+@media (max-width: 760px) {
+  .garment-detail {
+    padding: 16px 12px 48px;
+  }
+
+  .garment-detail-sheet {
+    grid-template-columns: 1fr;
+  }
+
+  /* Las dos polaroids lado a lado, arriba de la ficha */
+  .garment-detail-photos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .garment-detail-card {
+    transform: none;
+  }
+
+  .garment-detail-fact {
+    grid-template-columns: minmax(6rem, 8rem) minmax(0, 1fr);
+    gap: 0.6rem;
+  }
+}

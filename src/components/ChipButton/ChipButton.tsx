@@ -11,9 +11,11 @@ type ChipButtonProps = {
     // Si viene, se renderiza como link: así andan el ctrl+click,
     // el "abrir en pestaña nueva" y el botón de atrás del navegador.
     to?: string;
+    // Solo para el botón (ej: mientras espera la respuesta del server)
+    disabled?: boolean;
 }
 
-const ChipButton = ({ text, type = 'button', onClick, variant = "solid", to }: ChipButtonProps) => {
+const ChipButton = ({ text, type = 'button', onClick, variant = "solid", to, disabled = false }: ChipButtonProps) => {
   const className = `chip-button is-${variant}`
 
   if (to) {
@@ -25,7 +27,7 @@ const ChipButton = ({ text, type = 'button', onClick, variant = "solid", to }: C
   }
 
   return (
-    <button className={className} type={type} onClick={onClick}>
+    <button className={className} type={type} onClick={onClick} disabled={disabled}>
         {text}
     </button>
   )

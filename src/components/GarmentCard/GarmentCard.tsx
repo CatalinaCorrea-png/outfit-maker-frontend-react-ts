@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 import { useTranslation } from "react-i18next"
 import type { Garment } from "../../domain/Garment"
 import "./garmentCard.css"
@@ -5,19 +6,25 @@ import "./garmentCard.css"
 // Escala fija del back: 1 = deportivo ... 5 = formal
 const FORMALITY_LEVELS = [1, 2, 3, 4, 5]
 
-const GarmentCard = ({ garment }: { garment: Garment }) => {
+type GarmentCardProps = {
+  garment: Garment
+  // Si viene, la card entera es un link (ej: al detalle de la prenda)
+  to?: string
+}
+
+const GarmentCard = ({ garment, to }: GarmentCardProps) => {
   const { t } = useTranslation("garments")
 
-  return (
+  const card = (
     <article className={`garment-card ${garment.active ? "" : "is-archived"}`}>
 
       <figure className="garment-card-photo">
-        {garment.frontImageUrl ? (
+        {garment.frontGridUrl ? (
           <>
-            <img className="garment-card-img" src={garment.frontImageUrl} alt={garment.name} loading="lazy" />
+            <img className="garment-card-img" src={garment.frontGridUrl} alt={garment.name} loading="lazy" />
             {/* La espalda aparece en hover. Decorativa: el nombre ya lo anuncia la de adelante */}
-            {garment.backImageUrl && (
-              <img className="garment-card-img is-back" src={garment.backImageUrl} alt="" aria-hidden="true" loading="lazy" />
+            {garment.backGridUrl && (
+              <img className="garment-card-img is-back" src={garment.backGridUrl} alt="" aria-hidden="true" loading="lazy" />
             )}
           </>
         ) : (
@@ -69,6 +76,13 @@ const GarmentCard = ({ garment }: { garment: Garment }) => {
       </div>
     </article>
   )
+
+  // Un Link de verdad: andan el ctrl+click, "abrir en pestaña nueva" y el botón de atrás
+  return to ? (
+    <Link to={to} className="garment-card-link" aria-label={t("detail.open", { name: garment.name })}>
+      {card}
+    </Link>
+  ) : card
 }
 
 export default GarmentCard

@@ -1,6 +1,6 @@
 import type { ValidationKey, ValidationParams } from "../components/ValidationField/ValidationMessage";
 import { ValidationMessage } from "../components/ValidationField/ValidationMessage";
-import type { GarmentCreateJSON, GarmentJSON } from "../dto/GarmentDTO";
+import type { GarmentCreateJSON, GarmentJSON, GarmentPhotoJSON } from "../dto/GarmentDTO";
 import { Fit } from "./types/Fit";
 import { Pattern } from "./types/Pattern";
 import { Season } from "./types/Season";
@@ -33,8 +33,9 @@ export class Garment {
     // Soft delete: false = prenda donada/vendida, pero los outfits históricos quedan
     public active: boolean = true
     public createdAt: Date = new Date()
-    public frontImageUrl: string | null = null
-    public backImageUrl: string | null = null
+    // Las dos caras completas (original, miniatura, recorte); null si no tiene esa foto
+    public front: GarmentPhotoJSON | null = null
+    public back: GarmentPhotoJSON | null = null
 
     constructor(
         id: string = "",
@@ -51,8 +52,8 @@ export class Garment {
         careNotes: string | null = null,
         active: boolean = true,
         createdAt: Date = new Date(),
-        frontImageUrl: string | null = null,
-        backImageUrl: string | null = null
+        front: GarmentPhotoJSON | null = null,
+        back: GarmentPhotoJSON | null = null
     ) {
         this.id = id
         this.category = category
@@ -68,8 +69,18 @@ export class Garment {
         this.careNotes = careNotes
         this.active = active
         this.createdAt = createdAt
-        this.frontImageUrl = frontImageUrl
-        this.backImageUrl = backImageUrl
+        this.front = front
+        this.back = back
+    }
+
+    // La de la card: la miniatura, o la original si todavía no hay miniatura.
+    // El espejo de GarmentPhoto.gridKey() del back.
+    get frontGridUrl(): string | null {
+        return this.front?.thumbUrl ?? this.front?.url ?? null
+    }
+
+    get backGridUrl(): string | null {
+        return this.back?.thumbUrl ?? this.back?.url ?? null
     }
 
     static fromJSON(json: GarmentJSON): Garment {
@@ -78,11 +89,11 @@ export class Garment {
           json.primaryColor, json.secondaryColor ?? "",
           json.pattern, json.material, json.formality,
           json.fit, json.season, json.careNotes, json.active,
-          new Date(json.createdAt), json.frontImageUrl, json.backImageUrl
+          new Date(json.createdAt), json.front, json.back
       )
     }
 
-    // El camino inverso de fromJSON: los datos que espera POST /garments/create.
+    // El camino inverso de fromJSON: los datos que esperan el alta y la edición.
     // Las fotos van aparte, como archivos del mismo request (ver garmentService).
     toCreateJSON(): GarmentCreateJSON {
         return {

@@ -34,6 +34,7 @@
     "REQUEST_MALFORMED": "The data you sent isn't valid.",
     "VALIDATION_ERROR": "Some fields are invalid. Please check the form.",
     "CATEGORY_NOT_FOUND": "That category doesn't exist.",
+    "GARMENT_NOT_FOUND": "We couldn't find that garment.",
     "GARMENT_ALREADY_EXISTS": "You already have a garment with that name.",
     "GARMENT_NAME_REQUIRED": "The garment needs a name.",
     "GARMENT_TEXT_TOO_LONG": "One of the garment's texts is too long.",

@@ -6,6 +6,8 @@ import Register from '../pages/Register/Register'
 import Garments from '../pages/Garments/Garments'
 import { useAuth } from "../context/AuthContext"
 import AddGarment from "../pages/AddGarment/AddGarment"
+import GarmentDetail from "../pages/GarmentDetail/GarmentDetail"
+import EditGarment from "../pages/EditGarment/EditGarment"
 
 const AppRouter = () => {
 	const { user } = useAuth()
@@ -20,6 +22,8 @@ const AppRouter = () => {
 			<Route element={<PrivateLayer />}>
 				<Route path="/garments" element={<Garments />} />
 				<Route path="/add-garment" element={<AddGarment />} />
+				<Route path="/garments/:id" element={<GarmentDetail />} />
+				<Route path="/garments/:id/edit" element={<EditGarment />} />
 			</Route>
 		</Routes>
   )

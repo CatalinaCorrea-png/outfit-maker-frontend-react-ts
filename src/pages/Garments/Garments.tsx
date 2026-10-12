@@ -66,7 +66,7 @@ const Garments = () => {
         ) : (
           <div className="garments-grid">
             {garments.map((garment: Garment) => (
-              <GarmentCard key={garment.id} garment={garment} />
+              <GarmentCard key={garment.id} garment={garment} to={`/garments/${encodeURIComponent(garment.id)}`} />
             ))}
           </div>
         )}
